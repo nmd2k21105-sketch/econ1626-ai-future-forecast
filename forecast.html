@@ -139,6 +139,13 @@
     .sl-out{background:var(--navy);color:#fff;padding:14px;text-align:center}
     .sl-out .big{font-family:Arial,sans-serif;font-size:1.8rem;font-weight:700;color:#7aabce;display:block;line-height:1;margin-bottom:5px}
     .sl-out .lbl{font-family:Arial,sans-serif;font-size:.7rem;color:#c5d8ea;display:block;line-height:1.4}
+    .model-reveal{margin-top:10px;border:1px solid var(--rule);background:#f8f8f5;font-family:Arial,sans-serif}
+    .model-reveal summary{cursor:pointer;list-style:none;padding:10px 12px;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .model-reveal summary::-webkit-details-marker{display:none}
+    .model-reveal summary::after{content:'+';font-size:1rem;line-height:1;color:var(--teal)}
+    .model-reveal[open] summary::after{content:'−'}
+    .model-reveal p{font-size:.72rem;color:#444;line-height:1.5;margin:0;padding:0 12px 10px}
+    .model-formula{display:block;margin:0 12px 10px;padding:8px 10px;background:#fff;border-left:3px solid var(--teal);font-family:"Source Code Pro","Courier New",monospace;font-size:.66rem;color:#1a2a3a;line-height:1.45}
 
     .ref-sec{background:#f9f9f6;padding:44px 24px;border-top:1px solid var(--rule)}
     .ref-inner{max-width:940px;margin:0 auto}
@@ -365,6 +372,12 @@
               <span class="lbl">Estimated change in junior associate demand at large firms by 2030</span>
             </div>
             <div style="margin-top:8px;font-family:Arial,sans-serif;font-size:.68rem;color:var(--muted);line-height:1.4">Illustrative model based on Acemoglu &amp; Restrepo (2019) task framework. At baseline assumptions (50% automation, 80% adoption, 30% reinstatement) the model predicts a ~28% decline in junior demand at large firms — consistent with MinterEllison's observed 30.8% cut.</div>
+            <details class="model-reveal">
+              <summary>Explain the interaction</summary>
+              <p>This is an illustrative sensitivity model, not an econometric forecast. It shows how displacement and reinstatement interact when the assumptions change.</p>
+              <span class="model-formula">net decline = automatable junior tasks × large-firm adoption × (1 − new roles created)</span>
+              <p>The exact percentage is less important than the mechanism: junior demand falls when automation and adoption are high, unless new AI-supervision or governance roles are created fast enough to offset displaced routine tasks.</p>
+            </details>
           </div>
         </div>
       </div>
