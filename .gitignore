@@ -1,0 +1,11 @@
+# Research materials — not for upload (copyrighted papers, local notes)
+research/
+
+# Lecture slides
+lecture slide/
+
+# PDFs
+*.pdf
+
+# macOS
+.DS_Store
