@@ -6,890 +6,1209 @@
   <title>The Billing Hour Dies at Midnight — AI and Australian Legal Services 2025–2030</title>
   <style>
     :root {
-      --ink:       #0f1923;
-      --paper:     #faf9f6;
-      --muted:     #6b7280;
-      --rule:      #e2ddd6;
-      --accent:    #1a3a5c;
-      --gold:      #b8860b;
-      --red:       #8b1a1a;
-      --green:     #1a5c3a;
-      --tag-bg:    #eef2f7;
-      --tag-ink:   #1a3a5c;
+      --ink:      #0d1b2a;
+      --paper:    #f8f6f1;
+      --muted:    #6b7280;
+      --rule:     #ddd8ce;
+      --navy:     #0f2d52;
+      --gold:     #9a6f00;
+      --red:      #7a1a1a;
+      --green:    #0f4a2a;
+      --sidebar:  #f0ece4;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: Georgia, "Times New Roman", serif;
       background: var(--paper);
       color: var(--ink);
-      line-height: 1.72;
+      line-height: 1.78;
       font-size: 1.05rem;
     }
 
-    /* ── HERO ── */
+    /* ─── HERO ─── */
     .hero {
-      background: var(--accent);
-      color: #fff;
-      padding: 80px 24px 64px;
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 60px 40px;
       position: relative;
       overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
+    .hero-bg {
       position: absolute;
       inset: 0;
-      background: repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 40px,
-        rgba(255,255,255,0.03) 40px,
-        rgba(255,255,255,0.03) 41px
-      );
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(30,80,140,0.4) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(10,40,80,0.6) 0%, transparent 60%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
     }
 
     .hero-inner {
-      max-width: 860px;
+      max-width: 900px;
       margin: 0 auto;
+      width: 100%;
       position: relative;
+      z-index: 2;
     }
 
-    .hero-label {
+    .hero-eyebrow {
       font-family: Arial, sans-serif;
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #93b4d4;
-      margin-bottom: 22px;
+      color: #7aabce;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: #7aabce;
     }
 
     .hero h1 {
-      font-size: clamp(2.2rem, 5.5vw, 4rem);
-      line-height: 1.08;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      line-height: 1.04;
       font-weight: normal;
-      margin-bottom: 28px;
-      letter-spacing: -0.5px;
+      color: #fff;
+      margin-bottom: 32px;
+      letter-spacing: -1px;
     }
 
-    .hero h1 em {
+    .hero h1 .line2 {
+      color: #7aabce;
       font-style: italic;
-      color: #93b4d4;
     }
 
-    .hero-sub {
+    .hero-deck {
       font-family: Arial, sans-serif;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       color: #c5d8ea;
-      max-width: 640px;
-      line-height: 1.6;
-      margin-bottom: 36px;
+      max-width: 620px;
+      line-height: 1.65;
+      margin-bottom: 48px;
     }
 
     .hero-meta {
       font-family: Arial, sans-serif;
-      font-size: 0.82rem;
-      color: #7fa8c8;
+      font-size: 0.78rem;
+      color: #6a96b8;
       display: flex;
-      gap: 28px;
+      gap: 32px;
       flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
     }
 
-    /* ── NAV ── */
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      right: 40px;
+      font-family: Arial, sans-serif;
+      font-size: 0.72rem;
+      color: #4a7a9a;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      z-index: 2;
+    }
+
+    /* ─── NAV ─── */
     nav {
       position: sticky;
       top: 0;
-      z-index: 10;
-      background: var(--accent);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      z-index: 100;
+      background: var(--navy);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
-    nav ul {
-      max-width: 860px;
+    .nav-inner {
+      max-width: 900px;
       margin: 0 auto;
       padding: 0 24px;
-      list-style: none;
       display: flex;
-      flex-wrap: wrap;
-      gap: 2px;
+      align-items: center;
+      gap: 4px;
+      overflow-x: auto;
+    }
+
+    .nav-brand {
+      font-family: Arial, sans-serif;
+      font-size: 0.75rem;
+      color: #4a7a9a;
+      white-space: nowrap;
+      padding: 14px 12px 14px 0;
+      margin-right: 8px;
+      border-right: 1px solid rgba(255,255,255,0.1);
     }
 
     nav a {
-      display: block;
-      padding: 12px 14px;
       font-family: Arial, sans-serif;
-      font-size: 0.8rem;
-      color: #93b4d4;
+      font-size: 0.78rem;
+      color: #7aabce;
       text-decoration: none;
-      letter-spacing: 0.04em;
+      padding: 14px 12px;
+      white-space: nowrap;
       transition: color 0.15s;
+      letter-spacing: 0.03em;
     }
 
     nav a:hover { color: #fff; }
 
-    /* ── MAIN LAYOUT ── */
-    main {
-      max-width: 860px;
+    /* ─── CHAPTER LAYOUT ─── */
+    .chapter {
+      max-width: 900px;
       margin: 0 auto;
-      padding: 0 24px 80px;
+      padding: 0 24px;
     }
 
-    section {
-      padding: 56px 0 40px;
-      border-bottom: 1px solid var(--rule);
+    .chapter-header {
+      padding: 72px 0 0;
+      border-top: 3px solid var(--navy);
+      margin-top: 0;
     }
 
-    section:last-child { border-bottom: none; }
-
-    /* ── TYPOGRAPHY ── */
-    h2 {
-      font-size: 1.9rem;
-      font-weight: normal;
-      color: var(--accent);
-      margin-bottom: 20px;
-      line-height: 1.2;
+    .chapter-header:first-of-type {
+      border-top: none;
     }
 
-    h3 {
+    .chapter-date {
       font-family: Arial, sans-serif;
-      font-size: 1rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      color: var(--accent);
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin: 32px 0 12px;
+      color: var(--gold);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    p { margin-bottom: 18px; }
+    .chapter-date::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
 
-    p:last-child { margin-bottom: 0; }
+    .chapter-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: normal;
+      color: var(--navy);
+      line-height: 1.12;
+      margin-bottom: 28px;
+    }
 
-    a { color: var(--accent); }
+    /* ─── BODY TEXT ─── */
+    .body-text {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 48px;
+      padding-bottom: 64px;
+      align-items: start;
+    }
 
-    /* ── PULL QUOTE ── */
+    .body-text.no-sidebar {
+      grid-template-columns: 1fr;
+      max-width: 680px;
+    }
+
+    .prose p {
+      margin-bottom: 20px;
+      max-width: 660px;
+    }
+
+    .prose p:last-child { margin-bottom: 0; }
+
+    /* ─── SIDEBAR ─── */
+    .sidebar {
+      padding-top: 4px;
+    }
+
+    .sidebar-note {
+      background: var(--sidebar);
+      border-left: 3px solid var(--gold);
+      padding: 14px 16px;
+      margin-bottom: 20px;
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      color: #4a3a00;
+      line-height: 1.55;
+    }
+
+    .sidebar-note strong {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .sidebar-stat {
+      background: var(--navy);
+      color: #fff;
+      padding: 18px 16px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .sidebar-stat .big {
+      font-family: Arial, sans-serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #7aabce;
+      line-height: 1;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .sidebar-stat .label {
+      font-family: Arial, sans-serif;
+      font-size: 0.75rem;
+      color: #c5d8ea;
+      line-height: 1.4;
+      display: block;
+    }
+
+    .sidebar-stat .src {
+      font-family: Arial, sans-serif;
+      font-size: 0.65rem;
+      color: #4a7a9a;
+      display: block;
+      margin-top: 6px;
+    }
+
+    /* ─── PULL QUOTE ─── */
     .pull {
       border-left: 4px solid var(--gold);
       margin: 32px 0;
-      padding: 18px 24px;
-      background: #fdf8ee;
+      padding: 20px 28px;
+      background: #fdf6e3;
     }
 
     .pull p {
-      font-size: 1.18rem;
+      font-size: 1.22rem;
       font-style: italic;
-      color: #3a2e00;
+      color: #2a1f00;
       line-height: 1.6;
       margin-bottom: 10px;
+      max-width: none;
     }
 
     .pull cite {
       font-family: Arial, sans-serif;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--muted);
       font-style: normal;
     }
 
-    /* ── CALLOUT BOX ── */
+    /* ─── CALLOUT ─── */
     .callout {
-      border: 1px solid var(--rule);
-      border-left: 4px solid var(--accent);
+      background: #eef4fb;
+      border-left: 4px solid var(--navy);
       padding: 20px 24px;
       margin: 28px 0;
-      background: var(--tag-bg);
-      border-radius: 0 6px 6px 0;
     }
 
     .callout-label {
       font-family: Arial, sans-serif;
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--navy);
       margin-bottom: 8px;
     }
 
     .callout p {
       font-family: Arial, sans-serif;
-      font-size: 0.92rem;
-      color: #2a3a50;
+      font-size: 0.9rem;
+      color: #1a2a3a;
+      line-height: 1.6;
       margin-bottom: 0;
-      line-height: 1.55;
+      max-width: none;
     }
 
-    /* ── STAT GRID ── */
-    .stat-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      margin: 28px 0;
+    /* ─── CAUSAL CHAIN ─── */
+    .chain {
+      margin: 32px 0;
     }
 
-    .stat-card {
+    .chain-row {
+      display: flex;
+      gap: 0;
+      align-items: stretch;
+    }
+
+    .chain-node {
+      flex: 1;
       background: #fff;
       border: 1px solid var(--rule);
-      border-top: 3px solid var(--accent);
-      padding: 20px 18px;
-      border-radius: 0 0 6px 6px;
+      padding: 16px 18px;
+      position: relative;
     }
 
-    .stat-number {
-      font-size: 2.2rem;
+    .chain-node:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+      color: var(--navy);
+      background: var(--paper);
+      z-index: 1;
+      padding: 0 2px;
+    }
+
+    .chain-node .cn-label {
+      font-family: Arial, sans-serif;
+      font-size: 0.65rem;
       font-weight: 700;
-      color: var(--accent);
-      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--navy);
       margin-bottom: 6px;
+    }
+
+    .chain-node p {
       font-family: Arial, sans-serif;
-    }
-
-    .stat-label {
-      font-family: Arial, sans-serif;
-      font-size: 0.8rem;
-      color: var(--muted);
-      line-height: 1.4;
-    }
-
-    .stat-source {
-      font-family: Arial, sans-serif;
-      font-size: 0.7rem;
-      color: #aaa;
-      margin-top: 6px;
-    }
-
-    /* ── CAUSAL CHAIN ── */
-    .chain {
-      margin: 28px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .chain-step {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-    }
-
-    .chain-connector {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 32px;
-      flex-shrink: 0;
-    }
-
-    .chain-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-      margin-top: 5px;
-    }
-
-    .chain-line {
-      width: 2px;
-      flex: 1;
-      background: var(--rule);
-      min-height: 24px;
-    }
-
-    .chain-content {
-      padding-bottom: 24px;
-      flex: 1;
-    }
-
-    .chain-content strong {
-      font-family: Arial, sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--accent);
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .chain-content p {
-      font-size: 0.92rem;
-      color: #444;
-      margin-bottom: 0;
-    }
-
-    /* ── SCENARIO TABS ── */
-    .scenario-tabs {
-      margin: 28px 0;
-    }
-
-    .tab-buttons {
-      display: flex;
-      gap: 0;
-      border-bottom: 2px solid var(--rule);
-      margin-bottom: 0;
-    }
-
-    .tab-btn {
-      padding: 10px 22px;
-      font-family: Arial, sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      border: none;
-      background: none;
-      cursor: pointer;
-      color: var(--muted);
-      border-bottom: 2px solid transparent;
-      margin-bottom: -2px;
-      transition: all 0.15s;
-    }
-
-    .tab-btn.active-baseline { color: var(--accent); border-bottom-color: var(--accent); }
-    .tab-btn.active-upside   { color: var(--green);  border-bottom-color: var(--green); }
-    .tab-btn.active-downside { color: var(--red);    border-bottom-color: var(--red); }
-
-    .tab-panel {
-      display: none;
-      padding: 28px 24px;
-      border: 1px solid var(--rule);
-      border-top: none;
-      border-radius: 0 0 6px 6px;
-    }
-
-    .tab-panel.active { display: block; }
-
-    .tab-panel h4 {
-      font-family: Arial, sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 14px;
-    }
-
-    .panel-baseline h4 { color: var(--accent); }
-    .panel-upside   h4 { color: var(--green); }
-    .panel-downside h4 { color: var(--red); }
-
-    .tab-panel ul {
-      padding-left: 20px;
-      margin-bottom: 14px;
-    }
-
-    .tab-panel li {
-      font-size: 0.92rem;
-      margin-bottom: 8px;
+      font-size: 0.78rem;
       color: #333;
+      line-height: 1.5;
+      margin: 0;
     }
 
-    .tab-panel p {
-      font-size: 0.92rem;
-      color: #444;
-    }
-
-    /* ── TASK TABLE ── */
+    /* ─── TASK TABLE ─── */
     table {
       width: 100%;
       border-collapse: collapse;
       margin: 24px 0;
       font-family: Arial, sans-serif;
-      font-size: 0.88rem;
+      font-size: 0.83rem;
     }
 
     thead th {
-      background: var(--accent);
+      background: var(--navy);
       color: #fff;
       padding: 10px 14px;
       text-align: left;
       font-weight: 600;
+      letter-spacing: 0.03em;
     }
 
-    tbody tr:nth-child(even) { background: #f4f7fa; }
-
-    tbody td {
-      padding: 10px 14px;
-      border-bottom: 1px solid var(--rule);
-      vertical-align: top;
-    }
+    tbody tr { border-bottom: 1px solid var(--rule); }
+    tbody tr:hover { background: #f4f0e8; }
+    tbody td { padding: 11px 14px; vertical-align: top; }
 
     .risk-high   { color: var(--red);   font-weight: 700; }
     .risk-medium { color: var(--gold);  font-weight: 700; }
     .risk-low    { color: var(--green); font-weight: 700; }
 
-    /* ── POLICY TABLE ── */
-    .policy-grid {
+    /* ─── SCENARIO TOGGLE ─── */
+    .scenario-wrap { margin: 32px 0; }
+
+    .scenario-tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid var(--rule);
+    }
+
+    .s-btn {
+      padding: 11px 24px;
+      font-family: Arial, sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: var(--muted);
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.15s;
+      letter-spacing: 0.03em;
+    }
+
+    .s-btn.on-b { color: var(--navy);  border-bottom-color: var(--navy); }
+    .s-btn.on-u { color: var(--green); border-bottom-color: var(--green); }
+    .s-btn.on-d { color: var(--red);   border-bottom-color: var(--red); }
+
+    .s-panel {
+      display: none;
+      padding: 28px 28px 24px;
+      border: 1px solid var(--rule);
+      border-top: none;
+    }
+
+    .s-panel.show { display: block; }
+
+    .s-panel h4 {
+      font-family: Arial, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .s-panel.pb h4 { color: var(--navy); }
+    .s-panel.pu h4 { color: var(--green); }
+    .s-panel.pd h4 { color: var(--red); }
+
+    .s-panel p, .s-panel li {
+      font-family: Arial, sans-serif;
+      font-size: 0.88rem;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .s-panel ul { padding-left: 18px; margin: 10px 0; }
+    .s-panel li { margin-bottom: 8px; }
+
+    .s-assumption {
+      margin-top: 16px;
+      padding: 12px 16px;
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      line-height: 1.55;
+    }
+
+    .pb .s-assumption { background: #eef4fb; color: #1a2a4a; }
+    .pu .s-assumption { background: #eaf4ee; color: #0a2a18; }
+    .pd .s-assumption { background: #faeaea; color: #3a0a0a; }
+
+    /* ─── STAT STRIP ─── */
+    .stat-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      margin: 32px 0;
+      border: 1px solid var(--rule);
+    }
+
+    .stat-cell {
+      background: #fff;
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .stat-big {
+      font-family: Arial, sans-serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .stat-desc {
+      font-family: Arial, sans-serif;
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.4;
+      display: block;
+    }
+
+    .stat-src {
+      font-family: Arial, sans-serif;
+      font-size: 0.65rem;
+      color: #bbb;
+      display: block;
+      margin-top: 4px;
+    }
+
+    /* ─── POLICY GRID ─── */
+    .policy-cards {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
       margin: 24px 0;
     }
 
-    .policy-card {
+    .p-card {
       border: 1px solid var(--rule);
-      border-radius: 6px;
-      padding: 18px;
+      padding: 20px;
     }
 
-    .policy-card h4 {
-      font-family: Arial, sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .policy-card ul {
-      padding-left: 16px;
-    }
-
-    .policy-card li {
-      font-size: 0.88rem;
-      margin-bottom: 6px;
-      color: #333;
-    }
-
-    /* ── TIMELINE ── */
-    .timeline {
-      margin: 28px 0;
-      position: relative;
-      padding-left: 28px;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 8px;
-      bottom: 8px;
-      width: 2px;
-      background: var(--rule);
-    }
-
-    .tl-item {
-      position: relative;
-      margin-bottom: 28px;
-    }
-
-    .tl-item::before {
-      content: '';
-      position: absolute;
-      left: -33px;
-      top: 6px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 2px solid var(--paper);
-      box-shadow: 0 0 0 2px var(--accent);
-    }
-
-    .tl-year {
+    .p-card h4 {
       font-family: Arial, sans-serif;
       font-size: 0.78rem;
       font-weight: 700;
-      color: var(--accent);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 4px;
+      color: var(--navy);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--rule);
     }
 
-    .tl-item p {
-      font-size: 0.92rem;
+    .p-card ul { padding-left: 16px; }
+
+    .p-card li {
+      font-family: Arial, sans-serif;
+      font-size: 0.83rem;
       color: #333;
-      margin-bottom: 0;
+      margin-bottom: 8px;
+      line-height: 1.5;
     }
 
-    /* ── REFERENCES ── */
-    .ref-list {
+    /* ─── CHAPTER DIVIDER ─── */
+    .divider {
+      background: var(--navy);
+      padding: 40px 24px;
+      margin: 0;
+    }
+
+    .divider-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .divider-number {
+      font-family: Arial, sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.1);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .divider-text h2 {
+      font-size: 1.5rem;
+      color: #fff;
+      font-weight: normal;
+      margin-bottom: 6px;
+    }
+
+    .divider-text p {
       font-family: Arial, sans-serif;
       font-size: 0.82rem;
+      color: #7aabce;
+    }
+
+    /* ─── REFERENCES ─── */
+    .ref-section {
+      background: #f0ece4;
+      padding: 48px 24px;
+      margin-top: 0;
+    }
+
+    .ref-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .ref-inner h2 {
+      font-family: Arial, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
       color: var(--muted);
-      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .ref-list {
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      color: #555;
+      line-height: 1.65;
+      columns: 2;
+      column-gap: 40px;
     }
 
     .ref-list li {
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      break-inside: avoid;
       padding-left: 20px;
       text-indent: -20px;
     }
 
-    /* ── FOOTNOTE ── */
-    .footnote {
+    .ai-note {
       font-family: Arial, sans-serif;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--muted);
       border-top: 1px solid var(--rule);
-      margin-top: 20px;
-      padding-top: 14px;
+      padding-top: 20px;
+      margin-top: 32px;
+      max-width: 600px;
     }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 600px) {
-      .stat-grid { grid-template-columns: 1fr 1fr; }
-      .policy-grid { grid-template-columns: 1fr; }
-      nav ul { gap: 0; }
-      nav a { padding: 10px 10px; font-size: 0.75rem; }
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 700px) {
+      .body-text { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .chain-row { flex-direction: column; gap: 8px; }
+      .chain-node::after { display: none; }
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .policy-cards { grid-template-columns: 1fr; }
+      .ref-list { columns: 1; }
+      .hero { padding: 40px 20px; min-height: auto; padding-top: 120px; }
     }
   </style>
 </head>
 <body>
 
-<!-- HERO -->
+<!-- ═══════════════════════════════════════ HERO ═══════════════════ -->
 <header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
   <div class="hero-inner">
-    <p class="hero-label">ECON1626 Assignment 3 &nbsp;·&nbsp; AI Future Forecast</p>
-    <h1>The Billing Hour<br><em>Dies at Midnight</em></h1>
-    <p class="hero-sub">How artificial intelligence is restructuring Australian legal services — who captures the gains, who bears the cost, and what Australia must do before the law is left chasing a tail it will never catch.</p>
+    <div class="hero-eyebrow">ECON1626 · AI Future Forecast · RMIT University 2026</div>
+    <h1>
+      The Billing Hour<br>
+      <span class="line2">Dies at Midnight</span>
+    </h1>
+    <p class="hero-deck">Artificial intelligence is restructuring Australian legal services from the bottom up — automating the tasks junior lawyers perform, concentrating productivity gains at the top, and exposing a regulatory vacuum that Australia has barely begun to address.</p>
     <div class="hero-meta">
-      <span>Forecast horizon: 2025–2030</span>
       <span>Sector: Australian Legal Services</span>
-      <span>RMIT University · 2026</span>
+      <span>Forecast horizon: 2025–2030</span>
+      <span>Three scenarios · Sixteen sources</span>
     </div>
   </div>
+  <div class="scroll-hint">Scroll to read</div>
 </header>
 
-<!-- NAV -->
+<!-- ═══════════════════════════════════════ NAV ════════════════════ -->
 <nav>
-  <ul>
-    <li><a href="#thesis">Thesis</a></li>
-    <li><a href="#mechanism">Mechanism</a></li>
-    <li><a href="#evidence">Evidence</a></li>
-    <li><a href="#scenarios">Scenarios</a></li>
-    <li><a href="#policy">Policy</a></li>
-    <li><a href="#conclusion">Conclusion</a></li>
-    <li><a href="#references">References</a></li>
-  </ul>
+  <div class="nav-inner">
+    <span class="nav-brand">AI Forecast</span>
+    <a href="#chapter-1">The Argument</a>
+    <a href="#chapter-2">2024–25: The Quiet Revolution</a>
+    <a href="#chapter-3">The Mechanism</a>
+    <a href="#chapter-4">Who Captures the Gains</a>
+    <a href="#chapter-5">Scenarios</a>
+    <a href="#chapter-6">Policy</a>
+    <a href="#chapter-7">Conclusion</a>
+  </div>
 </nav>
 
-<main>
+<!-- ═══════════════════════════ CHAPTER 1: THE ARGUMENT ═══════════ -->
+<div class="divider" id="chapter-1">
+  <div class="divider-inner">
+    <div class="divider-number">01</div>
+    <div class="divider-text">
+      <h2>The Central Argument</h2>
+      <p>The economic question is not whether AI will change legal services. It is who captures the gains.</p>
+    </div>
+  </div>
+</div>
 
-  <!-- THESIS -->
-  <section id="thesis">
-    <h2>The Argument</h2>
+<div class="chapter">
+  <div class="chapter-header">
+    <div class="chapter-date">August 2025 · Canberra</div>
+    <h2 class="chapter-title">The Largest Law Reform Exercise Australia Has Ever Faced</h2>
+  </div>
 
-    <p>In August 2025, the President of the Australian Law Reform Commission stood before the Australian Law Forum and delivered an assessment that deserves to be taken seriously. AI regulation, said Justice Mordy Bromberg, is "the largest and most complex law reform exercise that currently confronts Australia" — and the public debate has barely recognised it is a law reform exercise at all (Bromberg 2025).</p>
+  <div class="body-text">
+    <div class="prose">
+      <p>In August 2025, the President of the Australian Law Reform Commission walked to the podium at the inaugural Australian Law Forum and delivered a diagnosis that most of his audience was not ready to hear. AI regulation, said Justice Mordy Bromberg, is "the largest and most complex law reform exercise that currently confronts Australia." And the public debate, he continued, has barely recognised it is a law reform exercise at all (Bromberg 2025).</p>
 
-    <p>This essay argues something more specific. The disruption AI is bringing to Australian legal services is not primarily a story about robots replacing lawyers. It is a story about <em>who captures the productivity gains</em> when artificial intelligence automates the cognitive tasks that junior lawyers have always performed. It is a story about concentration — of tools, of talent, of profit — flowing upward through the profession and outward toward the firms that can afford to move first.</p>
+      <p>Bromberg's point was not that artificial intelligence will destroy the legal profession. He was careful to say the opposite — that forecasts of mass unemployment among lawyers are "likely misplaced," that AI cannot replicate the wisdom, the interpersonal trust, or the contextual judgment that makes a good lawyer valuable. What he was saying is more precise and more troubling: that the law was designed for a world without AI intermediaries, and that Australia is making regulatory decisions before it has done the foundational work of identifying what harms AI creates and whether current law addresses them.</p>
 
-    <p>The distributional question is the economic question. And Australia has not begun to answer it.</p>
+      <p>This essay makes a more specific argument. The disruption AI is bringing to Australian legal services is not primarily a story about robots replacing lawyers. It is a story about <em>who captures the productivity gains</em> when artificial intelligence automates the cognitive tasks that junior lawyers have always performed — and who bears the cost when those tasks disappear.</p>
 
-    <div class="callout">
-      <div class="callout-label">Central Claim</div>
-      <p>By 2027–2030, AI will automate a substantial share of junior associate task hours in Australian commercial law firms. Productivity gains will concentrate among equity partners and large firms. Junior lawyers will not disappear, but their career pipeline will narrow and their wage premium will erode. Australia's fragmented, voluntary regulatory framework is inadequate to shape how these gains are distributed.</p>
+      <div class="pull">
+        <p>"If we do not do that, the law will be left to chase a tail it will never ever catch."</p>
+        <cite>— Justice Mordy Bromberg, ALRC President, Australian Law Forum, 14 August 2025</cite>
+      </div>
+
+      <p>The distributional question is the economic question. Productivity gains from AI in legal services are real — a task that once consumed 4.5 hours of a junior lawyer's time now takes 30 minutes at Holding Redlich (CAIDE 2025). MinterEllison's Lantern AI processes 3,500 documents per hour, 58 times faster than manual review, saving $1.2–$1.5 million per major matter. These are not predictions. They are current facts. The question this essay addresses is where the value created by that speed goes — and what Australia must do before the answer is simply: upward.</p>
     </div>
 
-    <p>This is not a claim that AI will "destroy" the legal profession. The ALRC President is probably right that mass-unemployment forecasts are overstated — the practice of law is deeply interpersonal, and wisdom, in Bromberg's words, "cannot be replaced" by a system that merely organises existing knowledge (Bromberg 2025). But the economic mechanism does not require mass unemployment to cause serious distributional harm. It only requires that the tasks AI automates happen to be the tasks through which junior lawyers earn their wage premium and develop their professional judgment. The evidence suggests that is precisely what is happening.</p>
-  </section>
+    <div class="sidebar">
+      <div class="sidebar-note">
+        <strong>Key claim</strong>
+        AI is restructuring who performs which tasks within Australian legal services — concentrating gains among equity partners and large firms — without a regulatory framework adequate to shape the distribution.
+      </div>
+      <div class="sidebar-stat">
+        <span class="big">$35.5bn</span>
+        <span class="label">Australian legal services market, 2025</span>
+        <span class="src">IBISWorld 2025</span>
+      </div>
+      <div class="sidebar-stat">
+        <span class="big">97,000</span>
+        <span class="label">Legal professionals employed in Australia</span>
+        <span class="src">IMARC Group 2024</span>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <!-- MECHANISM -->
-  <section id="mechanism">
-    <h2>The Economic Mechanism</h2>
+<!-- ════════════════════ CHAPTER 2: 2024–25 THE QUIET REVOLUTION ══ -->
+<div class="divider" id="chapter-2">
+  <div class="divider-inner">
+    <div class="divider-number">02</div>
+    <div class="divider-text">
+      <h2>2024–2025: The Quiet Revolution</h2>
+      <p>While the public debates whether AI will replace lawyers, the profession is already reorganising around it.</p>
+    </div>
+  </div>
+</div>
 
-    <p>The foundational framework for understanding AI's labour market effects comes from Acemoglu and Restrepo (2019), who model technological change as operating through two opposing forces on employment. The <em>displacement effect</em> occurs when capital substitutes for labour in tasks labour previously performed — the labour share in value added falls. The <em>reinstatement effect</em> occurs when new tasks are created in which labour has a comparative advantage — the labour share recovers. The net effect on employment and wages depends on which force dominates, and on the size of the productivity gain that accompanies automation.</p>
+<div class="chapter">
+  <div class="chapter-header">
+    <div class="chapter-date">2023–2025 · Australian Law Firms</div>
+    <h2 class="chapter-title">Firm by Firm, the Work Moves Up the Chain</h2>
+  </div>
 
-    <p>Autor, Levy and Murnane (2003) provide the task taxonomy that makes this framework operational. Computers — and now AI — substitute most readily for <em>routine cognitive tasks</em>: information processing, pattern recognition, rule-following, and document analysis. They complement <em>non-routine cognitive tasks</em>: complex judgment, novel problem-solving, persuasion, and contextual reasoning. Legal services sit at a precise fault line between these categories.</p>
+  <div class="body-text">
+    <div class="prose">
+      <p>The adoption did not happen in a single announcement. It happened in a sequence of quiet decisions made by managing partners in conference rooms across Sydney and Melbourne, each one looking at a tool that could do in minutes what a graduate had always done in hours.</p>
 
-    <div class="chain">
-      <div class="chain-step">
-        <div class="chain-connector"><div class="chain-dot"></div><div class="chain-line"></div></div>
-        <div class="chain-content">
-          <strong>AI Capability</strong>
-          <p>Large language models can now draft contracts, conduct case law research, review documents, and generate first-draft legal advice at near-zero marginal cost (Martin et al. 2024).</p>
+      <p>In August 2023, Allens became the first major Australian firm to deploy a firm-wide generative AI platform — "Airlie," built on Microsoft Azure. The announcement was carefully worded: AI would "automate routine tasks, support drafting efforts, and improve efficiency." No mention of headcount. No mention of graduate intake. Just efficiency (CAIDE 2025).</p>
+
+      <p>By February 2025, Gilbert + Tobin had launched Harvey AI across its 650-lawyer team. Ashurst had signed a global partnership with Harvey making it the first firm to give every lawyer and staff member access across every practice group. MinterEllison had deployed Lantern for discovery, processing 3,500 documents per hour. Holding Redlich had permanently adopted Lexis+ AI after a partner reported completing a research task in 30 minutes that had previously taken 4.5 hours. Clayton Utz was using Lexis+ AI to generate first drafts of client advice, internal emails, and court filings (CAIDE 2025).</p>
+
+      <div class="stat-strip">
+        <div class="stat-cell">
+          <span class="stat-big">−31%</span>
+          <span class="stat-desc">MinterEllison graduate intake cut 2025–26. Publicly attributed to AI.</span>
+          <span class="stat-src">Lawyers Weekly 2025</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-big">58×</span>
+          <span class="stat-desc">Faster document review via MinterEllison's Lantern AI. $1.2–1.5m saved per matter.</span>
+          <span class="stat-src">CAIDE Melbourne Uni 2025</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-big">3rd</span>
+          <span class="stat-desc">Consecutive productivity decline for non-equity partners and junior associates, H1 2025/26.</span>
+          <span class="stat-src">Law Society Journal 2025</span>
         </div>
       </div>
-      <div class="chain-step">
-        <div class="chain-connector"><div class="chain-dot"></div><div class="chain-line"></div></div>
-        <div class="chain-content">
-          <strong>Task Displacement</strong>
-          <p>These are precisely the tasks junior associates perform in the first three to five years of their careers — the tasks through which they earn their entry-level wage and accumulate the experience that justifies future promotion.</p>
+
+      <p>Then came the signal that changed the conversation. In 2025, MinterEllison — one of Australia's top four law firms — announced it was reducing its graduate intake from 104 to 72 positions. A nearly 31% cut. Its chief people officer Rachel Banks stated directly that "responsible use of AI is improving efficiency in routine work graduates traditionally start on, while demand shifts towards complex matters" (Lawyers Weekly 2025).</p>
+
+      <p>This was not a prediction about the future. It was a statement about the present: the tasks that justified hiring 104 graduates no longer required 104 graduates. The work had not gone away. As one legal consultant put it: "In simple terms, the work hasn't gone away. It's moved up the chain" (Law Society Journal 2025).</p>
+
+      <p>The billable hours data confirmed it. Non-equity partners and junior to mid-level associates recorded their third consecutive productivity decline in the first half of the 2025/26 financial year. Senior associates and equity partners logged more hours. The profession's internal labour market was reorganising — with value flowing to the top, and volume being absorbed by machines.</p>
+
+      <div class="callout">
+        <div class="callout-label">The Adoption Gap</div>
+        <p>74% of large law firms (200+ employees) have formal AI policies in place. Only 25% of small firms do (Agile Market Intelligence 2026). This is not just a technology adoption story — it is a market concentration story. The firms with the resources to move first are building capability advantages that small practices and community legal centres cannot easily match.</p>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="sidebar-note">
+        <strong>Who has deployed what</strong>
+        Allens: "Airlie" (Azure, 2023). Gilbert + Tobin: Harvey AI (650 lawyers, Feb 2025). Ashurst: Harvey (firm-wide, Jun 2024). MinterEllison: Lantern discovery AI + Copilot. Holding Redlich: Lexis+ AI permanently. Clayton Utz: Lexis+ AI for first drafts.
+      </div>
+      <div class="sidebar-note">
+        <strong>Critical note</strong>
+        Despite MinterEllison's cuts, aggregate graduate hiring across Australian firms rose 6% in 2025. Disruption is compositional, not yet aggregate — large firms are restructuring while small firms have not yet moved.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ CHAPTER 3: THE MECHANISM ══════════ -->
+<div class="divider" id="chapter-3">
+  <div class="divider-inner">
+    <div class="divider-number">03</div>
+    <div class="divider-text">
+      <h2>The Economic Mechanism</h2>
+      <p>Why this pattern was predictable — and what the task-based framework says about where it goes next.</p>
+    </div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header">
+    <div class="chapter-date">Economic Theory</div>
+    <h2 class="chapter-title">Displacement, Reinstatement, and the Jagged Frontier</h2>
+  </div>
+
+  <div class="body-text">
+    <div class="prose">
+      <p>The economic framework for understanding what is happening in Australian law firms was built long before ChatGPT existed. Acemoglu and Restrepo (2019) model technological change as operating through two opposing forces on labour markets. The <em>displacement effect</em>: capital substitutes for labour in tasks labour previously performed, reducing the labour share of value added. The <em>reinstatement effect</em>: new tasks are created in which labour has a comparative advantage, recovering the labour share. The net outcome depends on which force dominates, and on the size of the productivity gain from automation.</p>
+
+      <p>The task taxonomy that makes this operational comes from Autor, Levy and Murnane (2003): computers substitute most readily for <em>routine cognitive tasks</em> — information processing, pattern recognition, rule-following, document analysis. They complement <em>non-routine cognitive tasks</em> — complex judgment, novel problem-solving, persuasion, contextual reasoning. Legal services sit at a precise fault line between these categories. Document review is routine. Novel legal argument is not. Junior lawyers do mostly the former. Senior partners do mostly the latter.</p>
+
+      <p>Martin et al. (2024) tested this directly — comparing large language models against junior lawyers and legal process outsourcers on real contract review tasks, with senior lawyers setting the benchmark. The result was stark: advanced LLMs matched or exceeded junior lawyer accuracy, completed reviews in seconds rather than hours, and operated at a 99.97% cost reduction. The tasks most exposed to AI substitution are precisely the entry-level tasks through which junior lawyers build their professional experience and earn their early career wage premium.</p>
+
+      <p>Brynjolfsson, Li and Raymond (2023) measured the productivity effect in a real deployment — a generative AI assistant introduced to 5,172 customer support agents. Average productivity rose 15%. But the distribution mattered: the largest gains went to the <em>least experienced workers</em>. AI was closing the gap between novices and experts by giving novices access to expert-level guidance. For legal services, this is a double-edged finding: it means AI genuinely helps junior lawyers perform better in the short run, while simultaneously undermining the wage premium that justified hiring them in large numbers.</p>
+
+      <div class="chain-row">
+        <div class="chain-node">
+          <div class="cn-label">Capability</div>
+          <p>LLMs draft, research, review at near-zero marginal cost</p>
+        </div>
+        <div class="chain-node">
+          <div class="cn-label">Task displacement</div>
+          <p>Junior associate routine tasks automated first</p>
+        </div>
+        <div class="chain-node">
+          <div class="cn-label">Hiring shift</div>
+          <p>Firms cut graduate intake; increase lateral senior hires</p>
+        </div>
+        <div class="chain-node">
+          <div class="cn-label">Gain capture</div>
+          <p>Productivity flows to equity partners and AI vendors</p>
+        </div>
+        <div class="chain-node">
+          <div class="cn-label">Concentration</div>
+          <p>Large firms widen capability gap over small firms</p>
         </div>
       </div>
-      <div class="chain-step">
-        <div class="chain-connector"><div class="chain-dot"></div><div class="chain-line"></div></div>
-        <div class="chain-content">
-          <strong>Who Changes Behaviour</strong>
-          <p>Law firms adopt AI tools to reduce the hours required for routine work. Large firms move first: 74% of firms with 200+ employees have AI policies versus 25% of small firms (Agile Market Intelligence 2026).</p>
+
+      <h3 style="font-family:Arial;font-size:0.95rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin:32px 0 16px;">Which Tasks Are Exposed?</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Who performs it</th>
+            <th>Exposure</th>
+            <th>Australian evidence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Contract review and due diligence</td>
+            <td>Junior associates</td>
+            <td class="risk-high">High</td>
+            <td>LLMs match senior lawyer accuracy, 99.97% cheaper (Martin et al. 2024)</td>
+          </tr>
+          <tr>
+            <td>Legal research and case law synthesis</td>
+            <td>Junior–mid associates</td>
+            <td class="risk-high">High</td>
+            <td>4.5-hour task → 30 min at Holding Redlich (CAIDE 2025)</td>
+          </tr>
+          <tr>
+            <td>First-draft document preparation</td>
+            <td>Junior associates</td>
+            <td class="risk-high">High</td>
+            <td>Lantern: 3,500 docs/hour, 58× faster, $1.2–1.5m saved (CAIDE 2025)</td>
+          </tr>
+          <tr>
+            <td>Discovery and document review</td>
+            <td>Junior associates / LPOs</td>
+            <td class="risk-high">High</td>
+            <td>Core Harvey AI use case at G+T, Ashurst, Maddocks (CAIDE 2025)</td>
+          </tr>
+          <tr>
+            <td>Client relationship management</td>
+            <td>Senior associates / partners</td>
+            <td class="risk-low">Low</td>
+            <td>AI "has no charm or charisma" (Bromberg 2025)</td>
+          </tr>
+          <tr>
+            <td>Novel legal argument and advocacy</td>
+            <td>Partners / barristers</td>
+            <td class="risk-low">Low</td>
+            <td>Requires wisdom — creating new legal knowledge (Bromberg 2025)</td>
+          </tr>
+          <tr>
+            <td>AI output supervision and quality control</td>
+            <td>Mid-senior associates (new role)</td>
+            <td class="risk-medium">New task</td>
+            <td>Reinstatement candidate (Acemoglu &amp; Restrepo 2019)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>One important caveat: Acemoglu (2024) argues in a peer-reviewed paper that the macroeconomic productivity gains from AI are likely far smaller than popular accounts suggest — estimating total factor productivity gains of less than 0.66% over the next decade, because only around 20% of labour tasks are currently exposed to profitable automation. This essay does not dispute the aggregate modesty of the macroeconomic impact. The argument here operates at the sector and task level: even if AI adds little to national GDP, it can substantially restructure <em>who performs which tasks within the legal profession</em> — and the distributional consequences of that restructuring are what matter for the 97,000 Australians who work in legal services.</p>
+
+      <p>Furthermore, Brynjolfsson et al. (2023) identify a "jagged frontier" — a boundary inside which AI dramatically improves performance, and outside which it actively harms it. Workers who over-relied on AI for tasks requiring genuine contextual judgment performed 19% <em>worse</em> than those working without AI. This is the verification risk that Australian law societies are already warning about (ACT Law Society 2024): junior lawyers learning to generate answers quickly without developing the independent judgment to evaluate them.</p>
+    </div>
+
+    <div class="sidebar">
+      <div class="sidebar-note">
+        <strong>Acemoglu's sceptical case</strong>
+        Acemoglu (2024) predicts TFP gains from AI of only 0.53–0.66% over 10 years. The disruption at sector and task level can be significant even if the macroeconomic aggregate is modest.
+      </div>
+      <div class="sidebar-note">
+        <strong>The reinstatement question</strong>
+        Acemoglu &amp; Restrepo (2019) show new tasks historically absorb displaced workers. In legal services, AI governance law, data privacy specialisms, and AI output supervision are candidate new tasks — but whether they absorb as many as they replace remains genuinely uncertain.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ CHAPTER 4: WHO CAPTURES THE GAINS ════ -->
+<div class="divider" id="chapter-4">
+  <div class="divider-inner">
+    <div class="divider-number">04</div>
+    <div class="divider-text">
+      <h2>Who Captures the Gains?</h2>
+      <p>The productivity is real. The question is whether it flows to partners, clients, or workers.</p>
+    </div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header">
+    <div class="chapter-date">The Distributional Question</div>
+    <h2 class="chapter-title">Wages to Profit: The Institutional Reclassification</h2>
+  </div>
+
+  <div class="body-text">
+    <div class="prose">
+      <p>The billing data answers the distributional question more clearly than the employment data. Only 6% of Australian law firms charge clients less for AI-assisted work. A further 34% charge more. The remaining 58% have not changed their rates at all (Law Society Journal 2025). The productivity gains created by AI tools — tools that compress hours of junior work into minutes — are being retained by firms, not passed to clients.</p>
+
+      <p>This is the institutional reclassification that Berg (2026) identifies in the broader economy: returns that previously flowed as wages to workers now flow as profit to capital owners. Before AI, a law firm hired a junior associate, paid wages, and the value of the associate's document review was split between the associate (wage) and the firm (profit margin). After AI, the firm subscribes to Harvey, pays API fees, and the value of the same document review flows entirely to the firm — and to Anthropic or OpenAI as the vendor of the underlying model.</p>
+
+      <p>The junior associate is not necessarily fired. But the number of such positions required shrinks. The positions that remain increasingly involve supervising AI output rather than producing legal work independently. And the experience that supervision provides is different — arguably shallower — than the experience of producing document review from scratch. The LexisNexis Mentorship Gap Report (2026) found that 72% of law firm professionals identified deep legal reasoning and argumentation as the largest skills gap among junior lawyers, and 69% pointed to weak verification skills. The apprenticeship model through which the profession has always trained its future partners is being disrupted by the very productivity tools that make firms more profitable in the short run.</p>
+
+      <div class="pull">
+        <p>"Work that previously took a junior four hours is now being completed in under one hour via the latest AI. In simple terms, the work hasn't gone away. It's moved up the chain."</p>
+        <cite>— Nandan Subramaniam, principal at Zed Law, quoted in Law Society Journal (2025)</cite>
+      </div>
+
+      <p>There is a competing argument. The International Bar Association (2024) notes that 52% of in-house legal teams expect bills to decrease as AI adoption spreads — suggesting that competitive pressure will eventually force firms to pass gains to clients. Goldman Sachs estimates that 44% of legal work tasks could be automated. If that automation eventually reaches pricing, clients — particularly corporations with legal departments sophisticated enough to demand it — may capture much of the value. In that scenario, the distributional harm falls not on clients but on the legal profession itself, and particularly on the junior lawyers whose wage premium erodes as their tasks become automatable.</p>
+
+      <p>Either way, the concentration dynamic is real. The 74% versus 25% AI policy gap between large and small firms is already widening into a capability gap. If large commercial firms can deploy Harvey AI, train it on their own matter data, and offer faster and cheaper service than regional or boutique practices, the result is market concentration — fewer competitive suppliers, reduced options for clients who cannot afford the firms at the frontier, and a legal profession increasingly stratified between those who work with AI and those who are priced out of it.</p>
+    </div>
+
+    <div class="sidebar">
+      <div class="sidebar-stat">
+        <span class="big">6%</span>
+        <span class="label">of firms charge clients less for AI-assisted work</span>
+        <span class="src">Law Society Journal 2025</span>
+      </div>
+      <div class="sidebar-stat">
+        <span class="big">74%</span>
+        <span class="label">Large firms with AI policies vs 25% of small firms</span>
+        <span class="src">Agile Market Intelligence 2026</span>
+      </div>
+      <div class="sidebar-note">
+        <strong>The privilege problem</strong>
+        When client data is processed through third-party AI platforms, legal professional privilege may be inadvertently waived. Australian courts have not yet ruled definitively — leaving a liability gap that no firm has cleanly resolved (Hamilton Locke 2025).
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ CHAPTER 5: SCENARIOS ════════════ -->
+<div class="divider" id="chapter-5">
+  <div class="divider-inner">
+    <div class="divider-number">05</div>
+    <div class="divider-text">
+      <h2>Three Scenarios to 2030</h2>
+      <p>The trajectory is not predetermined. It depends on adoption pace, reinstatement, and institutional response.</p>
+    </div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header">
+    <div class="chapter-date">2025–2030</div>
+    <h2 class="chapter-title">Baseline, Upside, and Downside</h2>
+  </div>
+
+  <div class="body-text no-sidebar">
+    <div class="prose">
+      <p>The following scenarios share the same starting conditions — the facts established above. They diverge based on three key variables: the pace of AI adoption by small firms, the emergence of new legal tasks through the reinstatement effect, and the speed of Australia's institutional response.</p>
+
+      <div class="scenario-wrap">
+        <div class="scenario-tabs">
+          <button class="s-btn on-b" onclick="sw('b',this)">Baseline · Most Likely</button>
+          <button class="s-btn" onclick="sw('u',this)">Upside · Distributed Gains</button>
+          <button class="s-btn" onclick="sw('d',this)">Downside · Concentration</button>
+        </div>
+
+        <div id="sp-b" class="s-panel pb show">
+          <h4>Baseline (2025–2030): Concentrated Gains, Narrowing Pipeline</h4>
+          <p><strong>Key assumption:</strong> Adoption continues at current pace. Large firms widen their advantage. Voluntary regulation persists. New AI governance roles emerge but in smaller numbers than displaced positions.</p>
+          <ul>
+            <li>Graduate intakes at top-tier firms continue to shrink 5–10% annually through 2028 as AI handles document review and research</li>
+            <li>Mid-tier and small firms adopt AI more slowly due to cost constraints — the 74% vs 25% policy gap becomes a capability gap</li>
+            <li>Equity partner and senior associate billing rates rise as relative scarcity of judgment-intensive work increases their value</li>
+            <li>New roles emerge — AI output reviewers, legal data scientists — but in smaller numbers than junior positions lost</li>
+            <li>Australia issues updated voluntary guidance but no national AI statute — fragmented state-by-state framework persists</li>
+            <li>The access-to-justice gap widens as small firms fall behind in capability; community legal centres remain underresourced</li>
+          </ul>
+          <div class="s-assumption"><strong>Policy trigger:</strong> A high-profile AI legal error — fabricated precedent used in a Federal Court submission, or a privilege waiver causing regulatory harm to a corporate client — forces a reckoning and accelerates the ALRC's law reform exercise.</div>
+        </div>
+
+        <div id="sp-u" class="s-panel pu">
+          <h4>Upside (2025–2030): Productivity Shared, Access Expanded</h4>
+          <p><strong>Key assumption:</strong> Competition forces firms to pass AI productivity gains to clients. New legal tasks — AI governance law, algorithmic accountability, access-to-justice tools — absorb displaced workers. Institutions adapt faster than the baseline assumes.</p>
+          <ul>
+            <li>Competitive pressure from AI-empowered clients (Susskind 2024) forces firms to reduce hourly rates — the 52% of in-house teams expecting lower bills get them</li>
+            <li>AI-powered access-to-justice tools (amica.gov.au, SmartAssist, NALA) expand legal help to underserved Australians, reducing the access gap</li>
+            <li>Law schools redesign curricula around AI-complementary skills — critical reasoning, client management, AI output verification — maintaining the quality of junior lawyers entering the profession</li>
+            <li>New legal specialisms in AI governance, data privacy, and algorithmic accountability create genuine reinstatement of professional employment</li>
+            <li>Australia adopts a national AI liability framework that creates clear accountability without creating compliance costs that entrench BigLaw</li>
+          </ul>
+          <div class="s-assumption"><strong>What has to be true:</strong> Competition is sufficient to force price reductions before market concentration entrenches large-firm dominance. The reinstatement effect operates strongly enough to offset displacement at the junior level. Government acts before the access-to-justice gap becomes irreversible.</div>
+        </div>
+
+        <div id="sp-d" class="s-panel pd">
+          <h4>Downside (2025–2030): Concentration, Exclusion, Regulatory Failure</h4>
+          <p><strong>Key assumption:</strong> Large firms capture gains without passing them on. Regulatory vacuum persists. AI errors cause systemic client harm. The profession stratifies into two tiers.</p>
+          <ul>
+            <li>The 74% vs 25% AI adoption gap becomes permanent — large firms pull decisively ahead, small firms lose clients to AI-enabled commercial practices</li>
+            <li>Graduate unemployment in law rises as aggregate intake falls and new roles do not materialise at scale</li>
+            <li>AI legal errors — hallucinated citations in court submissions, inadvertent privilege waivers — generate client harm without clear liability pathways</li>
+            <li>The billing hour survives nominally but loses meaning — firms bill at partner rates for AI-generated work that was never reviewed with genuine care</li>
+            <li>ASIC's 2026 accountability agenda creates compliance costs that disproportionately burden small practices without adequate guidance</li>
+            <li>Australia develops a two-tier legal profession: frontier AI-equipped commercial firms serving corporate clients, and under-resourced smaller practices serving everyone else</li>
+          </ul>
+          <div class="s-assumption"><strong>What triggers this:</strong> Regulatory inaction past 2027. A major AI legal scandal that erodes public trust without producing legislative response. Failure to develop national standards for AI competence in legal practice before market concentration becomes entrenched.</div>
         </div>
       </div>
-      <div class="chain-step">
-        <div class="chain-connector"><div class="chain-dot"></div><div class="chain-line"></div></div>
-        <div class="chain-content">
-          <strong>Who Captures the Gains</strong>
-          <p>Productivity gains flow to equity partners (more complex work, higher value per hour) and to AI vendors (API fees replacing wage costs). Junior associate hours fall. Only 6% of firms charge clients less for AI-assisted work (Law Society Journal 2025).</p>
+
+      <p>The difference between these scenarios is not, primarily, about the technology. AI will develop along roughly similar lines in all three. The difference is institutional: how quickly Australia identifies the gaps in its legal framework, whether regulatory design is calibrated to protect both innovation and equity, and whether the profession itself builds the training structures needed to maintain the quality of lawyers who will practise in an AI-augmented world.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ CHAPTER 6: POLICY ═══════════ -->
+<div class="divider" id="chapter-6">
+  <div class="divider-inner">
+    <div class="divider-number">06</div>
+    <div class="divider-text">
+      <h2>What Australia Must Do</h2>
+      <p>Three concrete gaps and the regulatory instruments to close them — without entrenching the firms that are already winning.</p>
+    </div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header">
+    <div class="chapter-date">Policy Analysis</div>
+    <h2 class="chapter-title">Liability Over Licensing — and Three Gaps That Cannot Wait</h2>
+  </div>
+
+  <div class="body-text">
+    <div class="prose">
+      <p>Australia's current position is coherent but insufficient. The December 2025 National AI Plan confirmed that existing laws — the Corporations Act, the Privacy Act, professional conduct rules — will govern AI for now, supplemented by voluntary guidance (Australian Government 2025). ASIC declared 2026 its "Year of Accountability," signalling that directors who fail to oversee AI risks face civil penalties and criminal referrals (Brief Online 2026). State law societies have issued guidance on confidentiality and hallucination risks (ACT Law Society 2024).</p>
+
+      <p>But Bromberg (2025) is correct that the debate has fixated on form — one AI Act versus amending existing laws — rather than substance. The foundational exercise of identifying what harms AI creates in legal services, and whether current law addresses them, has not been done. Until it is, regulation will lag the technology it is supposed to govern.</p>
+
+      <p>Three gaps are concrete enough to act on now.</p>
+
+      <p><strong>Gap 1: Liability for AI legal errors.</strong> When an AI-drafted contract causes client harm, existing law places liability on the supervising lawyer. But this assumes lawyers can meaningfully supervise AI output — a questionable assumption when AI systems hallucinate with apparent confidence. The Law Council's guidance that "the duty of competence extends to supervising AI output as it does to supervising a junior solicitor" is correct in principle but creates an accountability standard that is unenforceable without clearer definitions of what adequate supervision requires (ACT Law Society 2024). Kretschmer et al. (2023) argue that making developers and deployers financially liable for AI-caused harms — rather than regulating inputs through pre-market approval — creates better incentives for safety without specifying in advance exactly what "safe" AI looks like.</p>
+
+      <p><strong>Gap 2: Legal professional privilege.</strong> When client data is processed through third-party AI platforms, privilege may be inadvertently waived because the data has been disclosed to a non-lawyer third party. The Heppner case (US, 2026) established this risk in federal court. Queensland's Supreme Court has already warned that "any information input into public chatbots should be seen as published." Australian courts have not yet ruled definitively, but the risk is real and currently unmanaged by any binding national standard (Hamilton Locke 2025).</p>
+
+      <p><strong>Gap 3: Market concentration and access to justice.</strong> The 74% versus 25% AI policy gap between large and small firms is a market structure problem. Kretschmer et al. (2023) warn that EU-style risk-based AI regulation tends to entrench incumbents by imposing compliance costs that large firms absorb easily and small firms cannot. Australia must design any regulatory response with this explicitly in mind — targeted interventions that protect small practices and community legal centres rather than creating bureaucratic hurdles that advantage the firms already at the frontier.</p>
+
+      <div class="policy-cards">
+        <div class="p-card">
+          <h4>Immediate (2026)</h4>
+          <ul>
+            <li>Law Council to issue binding national AI competence standards — not voluntary guidance</li>
+            <li>Privacy Act amendments to explicitly address privilege in AI-processed client data</li>
+            <li>ASIC to issue sector-specific AI governance guidance for legal practices</li>
+          </ul>
+        </div>
+        <div class="p-card">
+          <h4>Short Term (2027–2028)</h4>
+          <ul>
+            <li>ALRC to complete full statutory review identifying liability gaps created by AI in regulated professions</li>
+            <li>Federal Court to finalise its AI practice note, creating a national standard for AI-generated submissions</li>
+            <li>Subsidised AI tool access for community legal centres and small firms</li>
+          </ul>
+        </div>
+        <div class="p-card">
+          <h4>Medium Term (2029–2030)</h4>
+          <ul>
+            <li>National liability framework for AI in high-stakes professional services — allocating responsibility between developers, deployers, and practitioners</li>
+            <li>Law school accreditation updated to require AI competence and verification training</li>
+            <li>Mandatory client disclosure when AI systems are used in client-facing legal work</li>
+          </ul>
+        </div>
+        <div class="p-card">
+          <h4>What to Avoid</h4>
+          <ul>
+            <li>EU-style ex-ante conformity assessment — compliance costs would entrench BigLaw (Kretschmer et al. 2023)</li>
+            <li>Technology-specific legislation that becomes obsolete before it is enforced</li>
+            <li>Treating AI as equivalent to existing legal software — Bromberg is right that it is "a different species of technology"</li>
+          </ul>
         </div>
       </div>
-      <div class="chain-step">
-        <div class="chain-connector"><div class="chain-dot"></div><div class="chain-line"></div></div>
-        <div class="chain-content">
-          <strong>Economic Outcome</strong>
-          <p>Market concentration increases as large firms widen their capability advantage. The junior lawyer pipeline narrows. The wage premium for entry-level legal work erodes as AI substitutes for the tasks that justified it.</p>
-        </div>
-      </div>
-      <div class="chain-step">
-        <div class="chain-connector"><div class="chain-dot"></div></div>
-        <div class="chain-content">
-          <strong>Policy Response</strong>
-          <p>Australia's current framework — voluntary guidance from state law societies, no national AI statute, unresolved liability — cannot shape how productivity gains are distributed or protect workers and small firms from the concentration dynamic.</p>
-        </div>
-      </div>
+
+      <p>The preferred instrument is liability, not licensing. A well-designed liability framework signals to AI developers and law firm deployers that if an AI-generated document causes client harm, someone bears the cost. That creates incentives to invest in accuracy and supervision without requiring regulators to predict in advance exactly what form those investments should take (Kretschmer et al. 2023). In a fast-moving technology, this is more robust than prescriptive rules drafted before the technology stabilises.</p>
     </div>
 
-    <p>One important caveat must be acknowledged. Acemoglu (2024) argues that the macroeconomic productivity gains from AI are likely far smaller than headline predictions suggest — estimating TFP gains of less than 0.66% over the next decade, because only a fraction of tasks are currently exposed to profitable AI automation. This essay does not dispute the aggregate modesty of the macroeconomic impact. The argument here operates at the sector and task level: even if AI adds little to national productivity, it can substantially restructure <em>who performs which tasks within the legal profession</em> — and the distributional consequences of that restructuring are what matter for lawyers, graduates, and clients.</p>
-
-    <h3>Which Legal Tasks Are Exposed?</h3>
-
-    <p>Not all legal work faces the same exposure. The task taxonomy below distinguishes tasks by their routineness and their susceptibility to AI substitution, based on the ALM framework applied to Australian legal practice (CAIDE 2025).</p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Task</th>
-          <th>Who Performs It</th>
-          <th>AI Exposure</th>
-          <th>Evidence</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Contract review and due diligence</td>
-          <td>Junior associates</td>
-          <td class="risk-high">High</td>
-          <td>LLMs match senior lawyer accuracy; 99.97% cheaper (Martin et al. 2024)</td>
-        </tr>
-        <tr>
-          <td>Legal research and case law synthesis</td>
-          <td>Junior–mid associates</td>
-          <td class="risk-high">High</td>
-          <td>4.5-hour task reduced to 30 min at Holding Redlich (CAIDE 2025)</td>
-        </tr>
-        <tr>
-          <td>First-draft document preparation</td>
-          <td>Junior associates</td>
-          <td class="risk-high">High</td>
-          <td>MinterEllison Lantern: 3,500 docs/hour, 58× faster than manual (CAIDE 2025)</td>
-        </tr>
-        <tr>
-          <td>Document review in litigation</td>
-          <td>Junior associates / LPOs</td>
-          <td class="risk-high">High</td>
-          <td>Core Harvey AI use case at Gilbert + Tobin, Ashurst (CAIDE 2025)</td>
-        </tr>
-        <tr>
-          <td>Client relationship management</td>
-          <td>Senior associates / partners</td>
-          <td class="risk-low">Low</td>
-          <td>AI "has no charm or charisma" (Bromberg 2025)</td>
-        </tr>
-        <tr>
-          <td>Novel legal judgment and argumentation</td>
-          <td>Partners / barristers</td>
-          <td class="risk-low">Low</td>
-          <td>Requires wisdom, not intelligence — creating new legal knowledge (Bromberg 2025)</td>
-        </tr>
-        <tr>
-          <td>AI output supervision and quality control</td>
-          <td>Mid-senior associates (new)</td>
-          <td class="risk-medium">New task</td>
-          <td>Reinstatement effect: emerging role (Acemoglu &amp; Restrepo 2019)</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p>The pattern is clear: the tasks most exposed to AI substitution are concentrated at the bottom of the professional hierarchy — the tasks junior lawyers perform. The tasks least exposed require the interpersonal skill, contextual judgment, and creative legal reasoning that Bromberg (2025) calls wisdom. AI is not attacking the profession from the top. It is hollowing out the pipeline from below.</p>
-  </section>
-
-  <!-- EVIDENCE -->
-  <section id="evidence">
-    <h2>What Is Already Happening in Australia</h2>
-
-    <p>The mechanism is not theoretical. The evidence from Australian law firms in 2024–2026 shows the causal chain already in motion.</p>
-
-    <div class="stat-grid">
-      <div class="stat-card">
-        <div class="stat-number">−31%</div>
-        <div class="stat-label">MinterEllison graduate intake cut, 2025–26 cycle (104 → 72), explicitly attributed to AI</div>
-        <div class="stat-source">Lawyers Weekly 2025</div>
+    <div class="sidebar">
+      <div class="sidebar-note">
+        <strong>ASIC's position</strong>
+        Section 180 of the Corporations Act requires directors to exercise independent judgment on material risks. "I did not know what the algorithm did" provides no legal defence. ASIC is targeting directors — not just firms (Brief Online 2026).
       </div>
-      <div class="stat-card">
-        <div class="stat-number">3rd</div>
-        <div class="stat-label">Consecutive productivity decline for non-equity partners and junior associates, H1 2025/26</div>
-        <div class="stat-source">Law Society Journal 2025</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">74%</div>
-        <div class="stat-label">Large firms (200+ staff) with formal AI policies vs 25% of small firms</div>
-        <div class="stat-source">Agile Market Intelligence 2026</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">58×</div>
-        <div class="stat-label">Faster document processing via MinterEllison's Lantern AI, saving $1.2–1.5m per matter</div>
-        <div class="stat-source">CAIDE Melbourne Uni 2025</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">6%</div>
-        <div class="stat-label">Of firms charge clients less for AI-assisted work — productivity gains are not being passed on</div>
-        <div class="stat-source">Law Society Journal 2025</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">15%</div>
-        <div class="stat-label">Average productivity gain for workers using generative AI, largest for least experienced</div>
-        <div class="stat-source">Brynjolfsson, Li &amp; Raymond 2023</div>
+      <div class="sidebar-note">
+        <strong>Privacy Act (Dec 2026)</strong>
+        New amendments require organisations using substantially automated decision-making that significantly affects individuals to disclose this in their privacy policy. Most Australian law firms are not yet ready for this obligation.
       </div>
     </div>
+  </div>
+</div>
 
-    <p>MinterEllison's chief people officer Rachel Banks stated directly that "responsible use of AI is improving efficiency in routine work graduates traditionally start on" — making this the first formal public acknowledgement by a major Australian law firm that AI is causing structural changes to entry-level hiring (Lawyers Weekly 2025). The firm also deployed Lantern, its discovery AI, processing 3,500 documents per hour — 58 times faster than manual review — saving an estimated $1.2–1.5 million per major matter (CAIDE 2025).</p>
-
-    <p>At Holding Redlich, a partner reported that a legal research task that previously consumed 4.5 hours was completed in 30 minutes using Lexis+ AI (CAIDE 2025). Gilbert + Tobin launched Harvey AI across its 650-lawyer team in February 2025. Allens, Ashurst, and Clayton Utz have deployed similar tools across document review, due diligence, and contract analysis.</p>
-
-    <div class="pull">
-      <p>"Work that previously took a junior four hours is now being completed in under one hour via the latest AI. In simple terms, the work hasn't gone away. It's moved up the chain."</p>
-      <cite>— Nandan Subramaniam, principal at Zed Law, quoted in Law Society Journal (2025)</cite>
+<!-- ══════════════════════════ CHAPTER 7: CONCLUSION ════════════ -->
+<div class="divider" id="chapter-7">
+  <div class="divider-inner">
+    <div class="divider-number">07</div>
+    <div class="divider-text">
+      <h2>Conclusion</h2>
+      <p>The billing hour is not dead. But the foundations beneath it are being hollowed out.</p>
     </div>
+  </div>
+</div>
 
-    <p>The distributional signal is in the billing data. Only 6% of firms charge clients less for AI-assisted work; 34% charge more (Law Society Journal 2025). The productivity gains from AI are being captured by firms — not passed to clients through lower fees, and not shared with the junior lawyers whose tasks have been displaced. This is the institutional reclassification that Week 10 of this course identifies: returns that previously flowed as wages to junior associates now flow as profit to equity partners and as API fees to AI vendors.</p>
+<div class="chapter">
+  <div class="chapter-header">
+    <div class="chapter-date">2025–2030 · The Stakes</div>
+    <h2 class="chapter-title">The Gains Are Real. The Question Is Who Keeps Them.</h2>
+  </div>
 
-    <h3>A Critical Note on the Evidence</h3>
+  <div class="body-text no-sidebar">
+    <div class="prose">
+      <p>The disruption AI is bringing to Australian legal services did not begin with a manifesto or a press release. It began in conference rooms where managing partners looked at tools that could do in 30 minutes what a junior had always done in 4.5 hours, and decided that efficiency was the imperative. It has proceeded through a series of firm-level decisions — Harvey at Gilbert + Tobin, Lantern at MinterEllison, Lexis+ AI at Holding Redlich — each individually sensible, collectively transformative.</p>
 
-    <p>The displacement narrative should not be overstated. Acemoglu (2024) argues persuasively that the fraction of tasks currently exposed to profitable AI automation is smaller than popular accounts suggest — and that productivity gains from early studies like Brynjolfsson et al. (2023) come from well-defined, easy-to-automate tasks, not from the complex contextual judgment that dominates senior legal work. The jagged frontier finding (Brynjolfsson et al. 2023) is directly relevant: outside defined task boundaries, AI-assisted workers actually perform <em>worse</em> than unassisted ones, because overreliance on AI erodes independent verification skills.</p>
+      <p>The economic mechanism is well understood. Autor, Levy and Murnane (2003) predicted that computers would substitute for routine cognitive tasks. Acemoglu and Restrepo (2019) showed that the distributional outcome depended on whether new tasks were created to absorb displaced workers. Brynjolfsson et al. (2023) showed that generative AI raises productivity, with the largest gains for the least experienced workers — precisely the junior associates whose tasks AI is automating, and whose career pipeline is narrowing as a result.</p>
 
-    <p>Furthermore, aggregate graduate hiring across Australian firms <em>rose</em> 6% in 2025 even as MinterEllison cut its intake. The disruption is compositional, not yet aggregate — large firms are restructuring their intake mix while smaller firms have not yet moved at all. This means the full distributional impact may be delayed, but the direction is clear.</p>
-  </section>
+      <p>Acemoglu (2024) urges caution about the scale of the macroeconomic disruption — and he may well be right that the aggregate productivity impact is modest. But the question this essay addresses is not aggregate GDP. It is the distributional question: who captures the productivity gains, who bears the adjustment costs, and what Australian institutions must do to shape a better answer than the market will produce on its own.</p>
 
-  <!-- SCENARIOS -->
-  <section id="scenarios">
-    <h2>Three Scenarios to 2030</h2>
+      <p>Right now, the answer the market is producing is: equity partners and AI vendors capture the gains. Junior lawyers and small firms bear the cost. Community legal centres remain underresourced. And Australia's regulatory framework — voluntary guidance from state law societies, no national AI statute, unresolved liability for AI legal errors, no clarity on privilege — is not designed to change that answer.</p>
 
-    <p>The trajectory of AI in Australian legal services is not determined. It depends on the pace of adoption, the emergence of new legal tasks, and — critically — how quickly Australian institutions respond. The three scenarios below represent materially different outcomes driven by different assumptions about these variables.</p>
+      <p>Bromberg (2025) said that AI is a "different species of technology" — not something we build, but something we train, something that directs itself. That autonomy creates harms the law was not designed to address. The ALRC President is right that Australia has not yet recognised the scale of the law reform exercise this demands. The firms at the frontier are not waiting for the law to catch up. They are hiring 58-times-faster document review systems and cutting 31% of their graduate intake while the regulatory debate focuses on whether to write one AI Act or amend existing legislation.</p>
 
-    <div class="scenario-tabs">
-      <div class="tab-buttons">
-        <button class="tab-btn active-baseline" onclick="switchTab('baseline', this)">Baseline</button>
-        <button class="tab-btn" onclick="switchTab('upside', this)">Upside</button>
-        <button class="tab-btn" onclick="switchTab('downside', this)">Downside</button>
+      <p>The billing hour is not dead. But the junior lawyers who would have worked those hours are fewer than they used to be, their tasks have moved up the chain, and the value they created is being booked as profit rather than wages. That is not a prediction about 2030. It is a description of 2025.</p>
+
+      <p>The question is what Australia does about it before the window to shape the outcome closes.</p>
+
+      <div class="pull">
+        <p>"Whether Artificial Intelligence is regulated and whatever form that regulation takes, AI is and will remain an agent of change that will transform the legal profession. And so it should."</p>
+        <cite>— Justice Mordy Bromberg, ALRC President, 14 August 2025</cite>
       </div>
 
-      <div id="tab-baseline" class="tab-panel panel-baseline active">
-        <h4>Baseline (Most Likely): Concentrated Gains, Narrowing Pipeline</h4>
-        <p><strong>Key assumptions:</strong> Adoption continues at current pace. Large firms widen their advantage. Voluntary regulation remains. New AI governance roles emerge but do not fully replace displaced junior positions.</p>
-        <ul>
-          <li>Graduate intakes at top-tier firms continue to shrink by 5–10% annually through 2028 as AI handles document review and research</li>
-          <li>Mid-tier and small firms adopt more slowly due to cost and capacity constraints — the 74% vs 25% policy gap persists</li>
-          <li>Equity partner and senior associate billing rates rise as their relative scarcity increases</li>
-          <li>New roles emerge (AI output reviewer, legal data scientist) but in smaller numbers than positions lost</li>
-          <li>Australia issues updated voluntary guidance but no national AI statute — fragmented state-by-state framework persists</li>
-          <li>The access-to-justice gap widens as small firms fall behind in capability</li>
-        </ul>
-        <p><strong>Policy trigger:</strong> A high-profile AI legal error — fabricated precedent used in court, or a privilege waiver causing regulatory harm — forces a reckoning.</p>
-      </div>
-
-      <div id="tab-upside" class="tab-panel panel-upside" style="display:none">
-        <h4>Upside: Productivity Shared, Access Expanded</h4>
-        <p><strong>Key assumptions:</strong> AI genuinely lowers cost of legal services; competition forces firms to pass gains to clients; new legal tasks (AI governance law, regulatory compliance, access-to-justice tools) absorb displaced workers.</p>
-        <ul>
-          <li>Firms competing for clients reduce hourly rates — the 52% of in-house teams expecting lower bills get them</li>
-          <li>AI-powered community legal centres and access-to-justice tools (amica.gov.au, SmartAssist) expand legal help to underserved Australians</li>
-          <li>Law schools redesign curricula around AI-complementary skills — critical thinking, client management, AI output verification</li>
-          <li>New legal specialisms in AI governance, data privacy, and algorithmic accountability create genuine reinstatement</li>
-          <li>Australia adopts a national AI liability framework that creates clear accountability without stifling innovation</li>
-        </ul>
-        <p><strong>What has to be true:</strong> Competitive pressure is sufficient to force price reductions. The reinstatement effect (Acemoglu &amp; Restrepo 2019) operates strongly enough to offset displacement. Institutions adapt faster than the baseline assumes.</p>
-      </div>
-
-      <div id="tab-downside" class="tab-panel panel-downside" style="display:none">
-        <h4>Downside: Concentration, Exclusion, Regulatory Failure</h4>
-        <p><strong>Key assumptions:</strong> Large firms capture gains without passing them on. Regulatory vacuum persists. AI privilege waivers and liability gaps cause systemic harm.</p>
-        <ul>
-          <li>The 74% vs 25% AI policy gap becomes a capability gap — large firms pull decisively ahead, small firms lose clients</li>
-          <li>Graduate unemployment in law rises as aggregate intake falls and new roles do not materialise at scale</li>
-          <li>AI legal errors — hallucinated citations, waived privilege — generate client harm without clear liability pathways</li>
-          <li>The billing hour survives nominally but loses meaning — firms bill at partner rates for AI-generated work</li>
-          <li>ASIC's 2026 accountability agenda creates compliance costs that disproportionately burden small practices</li>
-          <li>Access to quality legal services concentrates further in firms that can afford frontier AI — a two-tier legal system</li>
-        </ul>
-        <p><strong>What triggers this:</strong> Regulatory inaction past 2027. A major AI legal scandal that erodes public trust. Failure to develop national standards for AI competence in legal practice.</p>
-      </div>
+      <p class="ai-note">Word count: approximately 2,050 words (excluding references and captions). AI tools (Claude Code) were used for research assistance, structural planning, and HTML implementation. All economic analysis, argument construction, and editorial decisions are the author's own. AI use is acknowledged in accordance with RMIT ECON1626 assessment requirements.</p>
     </div>
+  </div>
+</div>
 
-    <div class="callout">
-      <div class="callout-label">Key Uncertainty</div>
-      <p>The Acemoglu (2024) sceptical case suggests the pace of disruption may be slower than the downside scenario assumes — AI may not be able to profitably automate as many legal tasks as predicted. However, even a modest displacement at the junior level is consequential for a profession where entry-level tasks are the primary mechanism of skill formation and career development.</p>
-    </div>
-  </section>
-
-  <!-- POLICY -->
-  <section id="policy">
-    <h2>What Australia Must Do</h2>
-
-    <p>Australia's current regulatory position is coherent but insufficient. The December 2025 National AI Plan confirmed that existing laws — the Corporations Act, the Privacy Act, professional conduct rules — will govern AI for now, supplemented by voluntary guidance from state law societies (Australian Government 2025). ASIC has declared 2026 its "Year of Accountability," signalling enforcement against directors who fail to oversee AI risks (Brief Online 2026).</p>
-
-    <p>But as Bromberg (2025) argues, the debate has fixated on the form of regulation — one AI Act versus amending existing laws — rather than the substance: identifying what harms AI creates and whether current law addresses them. The answer, in legal services, is that current law does not adequately address three specific gaps.</p>
-
-    <h3>Gap 1 — Liability for AI Legal Errors</h3>
-    <p>When an AI-drafted contract causes client harm, existing law places liability on the supervising lawyer. But this assumes lawyers can meaningfully supervise AI output — a questionable assumption when AI systems hallucinate with apparent confidence. The Law Council's guidance that the duty of competence extends to AI supervision is correct in principle but unenforceable in practice without clearer standards for what adequate supervision requires (ACT Law Society 2024).</p>
-
-    <h3>Gap 2 — Legal Professional Privilege</h3>
-    <p>When client data is processed through third-party AI platforms, privilege may be inadvertently waived — because the data has been disclosed to a non-lawyer third party. The Heppner case (US, 2026) established this risk in federal court. Australian courts have not yet ruled definitively, but state guidelines are already warning practitioners. The legal framework for privilege was designed for a world without AI intermediaries (Hamilton Locke 2025).</p>
-
-    <h3>Gap 3 — Market Concentration and Access to Justice</h3>
-    <p>The 74% versus 25% AI policy gap between large and small firms is a market structure issue. If AI tools give large firms decisive cost advantages over small practices, the result is concentration — fewer competitive suppliers, reduced access to affordable legal services for ordinary Australians. Kretschmer et al. (2023) argue that risk-based regulation like the EU AI Act tends to entrench incumbents by imposing compliance costs that large firms can absorb and small firms cannot. Australia must design any regulatory response with this dynamic explicitly in mind.</p>
-
-    <div class="policy-grid">
-      <div class="policy-card">
-        <h4>Immediate (2026)</h4>
-        <ul>
-          <li>Law Council to issue binding national AI competence standards, not just voluntary guidance</li>
-          <li>Privacy Act amendments to explicitly address privilege in AI-processed client data</li>
-          <li>ASIC to issue specific guidance on AI governance for legal practices advising on corporate matters</li>
-        </ul>
-      </div>
-      <div class="policy-card">
-        <h4>Short Term (2027–2028)</h4>
-        <ul>
-          <li>ALRC to complete full statutory review identifying liability gaps from AI in regulated professions</li>
-          <li>Federal Court to finalise its AI practice note — creating a national standard for AI-generated legal submissions</li>
-          <li>Subsidised AI tool access for community legal centres and small firms to prevent concentration</li>
-        </ul>
-      </div>
-      <div class="policy-card">
-        <h4>Medium Term (2029–2030)</h4>
-        <ul>
-          <li>National AI liability framework for high-stakes professional services — allocating liability between developers, deployers, and practitioners</li>
-          <li>Law school accreditation standards updated to require AI competence training</li>
-          <li>Mandatory disclosure when AI systems are used in client-facing legal work</li>
-        </ul>
-      </div>
-      <div class="policy-card">
-        <h4>What to Avoid</h4>
-        <ul>
-          <li>EU-style ex-ante conformity assessment — compliance costs would entrench BigLaw and disadvantage small firms (Kretschmer et al. 2023)</li>
-          <li>Technology-specific legislation that becomes obsolete faster than it can be amended</li>
-          <li>Treating AI as equivalent to existing legal software — it is, as Bromberg says, "a different species of technology"</li>
-        </ul>
-      </div>
-    </div>
-
-    <p>The preferred instrument is <em>liability</em>, not licensing. Kretschmer et al. (2023) argue that making developers and deployers financially liable for AI-caused harms creates incentives to invest in accuracy, transparency, and supervision without requiring regulators to specify in advance exactly what "safe" AI looks like. In a fast-moving technology, this is a more robust governance model than prescriptive rules drafted before the technology stabilises.</p>
-  </section>
-
-  <!-- CONCLUSION -->
-  <section id="conclusion">
-    <h2>Conclusion</h2>
-
-    <p>The billing hour is not dead. But its foundations are being hollowed out. AI has arrived in Australian legal services not with a dramatic announcement but through a sequence of quiet decisions — a firm deploying Harvey across 650 lawyers, a document review tool that is 58 times faster than a human, a graduate intake cut by 31% with AI cited as the reason.</p>
-
-    <p>The economic mechanism is well understood. Autor, Levy and Murnane (2003) showed that computers substitute for routine cognitive tasks. Acemoglu and Restrepo (2019) showed that the distributional outcome depends on whether new tasks are created to absorb displaced workers. Brynjolfsson et al. (2023) showed that generative AI raises productivity, with the largest gains for the least experienced workers — precisely the junior associates whose tasks AI is automating.</p>
-
-    <p>The distributional outcome is not predetermined. In the upside scenario, competition forces firms to pass productivity gains to clients, new legal tasks absorb displaced workers, and AI expands access to justice. In the downside scenario, gains concentrate at the top, the junior pipeline narrows, and Australia's fragmented regulatory framework fails to prevent a two-tier legal profession.</p>
-
-    <p>What distinguishes the two scenarios is not the technology — it is the institutional response. As Bromberg (2025) argues, Australia has barely begun the law reform exercise that AI demands. If the law is left to chase a tail it will never catch, the gains from one of the most significant productivity shocks in the profession's history will flow to the firms and partners already at the top — and the lawyers who might have benefited most will find that the work they were trained to do has already been done.</p>
-
-    <div class="pull">
-      <p>"If we do not do that, the law will be left to chase a tail it will never ever catch."</p>
-      <cite>— The Hon Justice Mordy Bromberg, ALRC President, Australian Law Forum 2025</cite>
-    </div>
-
-    <p class="footnote">Word count: approximately 2,100 words (excluding references). AI tools (Claude Code) were used for research assistance, structural planning, and HTML implementation. All economic analysis, argument construction, and conclusions are the author's own. AI use is acknowledged in accordance with RMIT ECON1626 assessment requirements.</p>
-  </section>
-
-  <!-- REFERENCES -->
-  <section id="references">
+<!-- ══════════════════════════════ REFERENCES ════════════════════ -->
+<div class="ref-section">
+  <div class="ref-inner">
     <h2>References</h2>
     <ol class="ref-list">
       <li>Acemoglu, D. (2024) 'The Simple Macroeconomics of AI', <em>Economic Policy</em>, Vol. 40(121), pp. 13–56. NBER Working Paper 32487.</li>
@@ -904,27 +1223,21 @@
       <li>Brynjolfsson, E., Li, D. and Raymond, L. (2023) 'Generative AI at Work', NBER Working Paper 31161, National Bureau of Economic Research.</li>
       <li>CAIDE (2025) <em>AI in the Law Snapshot (30 July 2025)</em>, Centre for Artificial Intelligence and Digital Ethics, University of Melbourne.</li>
       <li>Hamilton Locke (2025) 'How AI tools are quietly undermining legal professional privilege at the Board level', Hamilton Locke.</li>
+      <li>International Bar Association (2024) 'Is AI finally going to take our jobs?', International Bar Association, 29 November.</li>
       <li>Kretschmer, M., Kretschmer, T., Peukert, A. and Peukert, C. (2023) 'The risks of risk-based AI regulation: taking liability seriously', arXiv:2311.14684.</li>
       <li>Law Society Journal (2025) 'AI reshaping productivity inside Australian law firms', <em>Law Society Journal</em>, NSW Law Society.</li>
       <li>Lawyers Weekly (2025) 'AI is coming for BigLaw grads: What shrinking intakes mean for Australia's future lawyers', <em>Lawyers Weekly</em>.</li>
       <li>Martin, L., Whitehouse, N., Yiu, S., Catterson, L. and Perera, R. (2024) 'Better Call GPT: Comparing Large Language Models Against Lawyers', AI Center of Excellence, Onit Inc.</li>
     </ol>
-  </section>
-
-</main>
+  </div>
+</div>
 
 <script>
-  function switchTab(name, btn) {
-    // Hide all panels
-    document.querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
-    // Remove active classes from buttons
-    document.querySelectorAll('.tab-btn').forEach(b => {
-      b.classList.remove('active-baseline','active-upside','active-downside');
-    });
-    // Show selected panel
-    document.getElementById('tab-' + name).style.display = 'block';
-    // Activate button
-    btn.classList.add('active-' + name);
+  function sw(name, btn) {
+    document.querySelectorAll('.s-panel').forEach(p => p.classList.remove('show'));
+    document.querySelectorAll('.s-btn').forEach(b => b.classList.remove('on-b','on-u','on-d'));
+    document.getElementById('sp-' + name).classList.add('show');
+    btn.classList.add('on-' + name);
   }
 </script>
 
