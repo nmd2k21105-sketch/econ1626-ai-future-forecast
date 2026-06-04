@@ -87,12 +87,20 @@ pus  <meta name="viewport" content="width=device-width, initial-scale=1">
     .stat-desc{font-family:Arial,sans-serif;font-size:.75rem;color:var(--muted);line-height:1.4;display:block}
     .stat-src{font-family:Arial,sans-serif;font-size:.62rem;color:#bbb;display:block;margin-top:4px}
 
-    .chain{margin:24px 0;display:flex;gap:0}
-    .chain-node{flex:1;background:#fff;border:1px solid var(--rule);border-top:3px solid var(--navy);padding:12px 14px;position:relative;transition:transform .18s ease,box-shadow .18s ease}
-    .chain-node:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(15,45,82,.08);z-index:2}
-    .chain-node:not(:last-child)::after{content:'→';position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:1.1rem;color:var(--navy);background:var(--paper);z-index:1;padding:0 2px}
+    .chain{margin:24px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .chain-node{background:#fff;border:1px solid var(--rule);border-top:4px solid var(--accent,var(--navy));padding:14px 15px;position:relative;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;min-height:138px;overflow:visible}
+    .chain-node:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(15,45,82,.08);z-index:2;background:#fbfcfd}
+    .chain-node:not(:last-child)::after{content:'→';position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:1.1rem;color:var(--accent,var(--navy));background:var(--paper);z-index:1;padding:0 2px}
+    .chain-node:nth-child(1){--accent:var(--navy);background:#f4f7fb}
+    .chain-node:nth-child(2){--accent:var(--red);background:#fff8f8}
+    .chain-node:nth-child(3){--accent:var(--green);background:#f4faf6}
     .cn-lbl{font-family:Arial,sans-serif;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--navy);margin-bottom:5px}
     .chain-node p{font-family:Arial,sans-serif;font-size:.75rem;color:#333;line-height:1.5;margin:0}
+    .mechanism-flow .chain-node{opacity:0;transform:translateX(-26px) scale(.96)}
+    .mechanism-flow.in-view .chain-node{animation:chainSlide .64s cubic-bezier(.16,1.08,.28,1) forwards}
+    .mechanism-flow.in-view .chain-node:nth-child(2){animation-delay:.14s}
+    .mechanism-flow.in-view .chain-node:nth-child(3){animation-delay:.28s}
+    @keyframes chainSlide{0%{opacity:0;transform:translateX(-26px) scale(.96)}70%{opacity:1;transform:translateX(3px) scale(1.01)}100%{opacity:1;transform:translateX(0) scale(1)}}
 
     table{width:100%;border-collapse:collapse;margin:20px 0;font-family:Arial,sans-serif;font-size:.82rem}
     thead th{background:var(--navy);color:#fff;padding:9px 12px;text-align:left;font-weight:600}
@@ -309,12 +317,10 @@ pus  <meta name="viewport" content="width=device-width, initial-scale=1">
       <p>Those tasks match the LLM exposure profile identified by Eloundou et al. (2024): language-heavy, information-processing work where software can reduce the time required to produce a usable output. Robb et al. (2025) confirm the legal-practice implication in Australia, warning that GenAI may reduce junior research, review and drafting work and create a "5-year problem" for junior skill formation. The productivity evidence points in the same direction. Martin et al. (2024) find that LLMs can match senior lawyer accuracy on contract review at far lower cost, while Dell'Acqua et al. (2026) explain why gains are uneven: AI can lift output inside its jagged frontier but degrade quality when professionals over-rely on it.</p>
       <p>Berg (2026) places this in the broader GPT framework: like electricity and computing before it, AI is a general-purpose technology whose full impact requires complementary organisational change, not just tool adoption. Australian firms are currently in the bolt-on phase, deploying AI onto existing workflows rather than redesigning around what AI can actually do (Berg 2026). When that redesign occurs, displacement may intensify. Acemoglu (2024) is mainly a total factor productivity argument: AI may produce meaningful task-level savings without delivering large aggregate productivity growth. But its distribution result matters here. Applied to legal services, modest productivity gains can still widen the capital-labour gap if research, drafting and review are compressed faster than firms create new junior roles in AI supervision, governance and client-facing analysis.</p>
 
-      <div class="chain">
-        <div class="chain-node"><div class="cn-lbl">AI Capability</div><p>LLMs perform legal research, drafting, and review at near-zero marginal cost (Martin et al. 2024)</p></div>
-        <div class="chain-node"><div class="cn-lbl">Task Displacement</div><p>Junior legal tasks map to LLM-exposed research, drafting, and document work (ABS 2024a,b; Eloundou et al. 2024)</p></div>
-        <div class="chain-node"><div class="cn-lbl">Behaviour Change</div><p>Firms cut graduate intake; work shifts up the chain (Tadros 2026; McKeith 2026)</p></div>
-        <div class="chain-node"><div class="cn-lbl">Gain Capture</div><p>Returns flow to equity partners and AI vendors; only 6% pass savings to clients (McKeith 2026)</p></div>
-        <div class="chain-node"><div class="cn-lbl">Concentration</div><p>AI benefits are narrowly focused on efficiency and risk reinforcing existing advantage (VLSB+C 2026)</p></div>
+      <div class="chain mechanism-flow">
+        <div class="chain-node"><div class="cn-lbl">Task Compression</div><p>LLMs reduce time and cost for research, drafting and review (CAIDE 2025; Martin et al. 2024).</p></div>
+        <div class="chain-node"><div class="cn-lbl">Pipeline Pressure</div><p>Junior training work shrinks before equivalent new tasks appear (Robb et al. 2025).</p></div>
+        <div class="chain-node"><div class="cn-lbl">Reinstatement Test</div><p>New AI tasks may appear inside or outside legal services; the question is whether enough valuable tasks emerge inside law firms (Acemoglu and Restrepo 2019; Acemoglu 2024).</p></div>
       </div>
 
       <h3 class="sec">Task Exposure by Seniority</h3>
