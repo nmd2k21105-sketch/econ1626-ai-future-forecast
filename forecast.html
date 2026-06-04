@@ -57,6 +57,12 @@ pus  <meta name="viewport" content="width=device-width, initial-scale=1">
     .sidebar{padding-top:4px}
     .s-note{background:#f8f8f5;border-left:3px solid var(--teal);padding:12px 14px;margin-bottom:16px;font-family:"Source Code Pro","Courier New",monospace;font-size:.72rem;color:#333;line-height:1.55;box-shadow:0 1px 0 rgba(0,0,0,.04)}
     .s-note strong{display:block;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:4px}
+    .adoption-sequence .s-note{transform:translateY(18px) scale(.88);transform-origin:left center;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+    .adoption-sequence.in-view .s-note{animation:sequencePop .62s cubic-bezier(.16,1.08,.28,1) forwards}
+    .adoption-sequence.in-view .s-note:nth-child(2){animation-delay:.14s}
+    .adoption-sequence.in-view .s-note:nth-child(3){animation-delay:.28s}
+    .adoption-sequence.in-view .s-note:nth-child(4){animation-delay:.42s}
+    @keyframes sequencePop{0%{opacity:0;transform:translateY(18px) scale(.88)}65%{opacity:1;transform:translateY(-2px) scale(1.03)}100%{opacity:1;transform:translateY(0) scale(1)}}
     .s-stat{background:linear-gradient(180deg,var(--navy),#0b213d);color:#fff;padding:16px 14px;margin-bottom:16px;text-align:center;box-shadow:0 10px 26px rgba(15,45,82,.12)}
     .s-stat .big{font-family:Arial,sans-serif;font-size:2.2rem;font-weight:700;color:#7aabce;line-height:1;display:block;margin-bottom:5px}
     .s-stat .lbl{font-family:Arial,sans-serif;font-size:.72rem;color:#c5d8ea;line-height:1.4;display:block}
@@ -261,7 +267,7 @@ pus  <meta name="viewport" content="width=device-width, initial-scale=1">
 </div>
 <div class="chapter">
   <div class="ch-header">
-    <div class="ch-date">Australian Law Firms · 2023–2025</div>
+    <div class="ch-date">Australian Law Firms · 2023–2026</div>
     <h2 class="ch-title">While the Debate Continues, the Profession Reorganises</h2>
   </div>
   <div class="body">
@@ -275,19 +281,12 @@ pus  <meta name="viewport" content="width=device-width, initial-scale=1">
         <div class="stat-cell"><span class="stat-big">42%</span><span class="stat-desc">Victorian lawyers reporting workplace AI guidelines. Guidance gaps are a governance and adoption constraint.</span><span class="stat-src">VLSB+C 2026</span></div>
       </div>
 
-      <h3 class="sec">Adoption Timeline</h3>
-      <div class="timeline">
-        <div class="tl-item"><div class="tl-year">Aug 2023</div><p>Allens launches "Airlie" — first major Australian firm-wide GenAI deployment.</p></div>
-        <div class="tl-item"><div class="tl-year">Jun 2024</div><p>Holding Redlich permanently adopts Lexis+ AI. Clayton Utz first Australian firm on LexisNexis AI research tool.</p></div>
-        <div class="tl-item"><div class="tl-year">Dec 2024</div><p>NSW Supreme Court Practice Note SC GEN 23 — first Australian court-level AI governance in litigation.</p></div>
-        <div class="tl-item"><div class="tl-year">Feb 2025</div><p>Gilbert + Tobin launches Harvey across 650 lawyers. MinterEllison cuts graduate intake 31%, citing AI.</p></div>
-        <div class="tl-item"><div class="tl-year">Aug 2025</div><p>ALRC President declares AI regulation Australia's "largest and most complex law reform exercise."</p></div>
-        <div class="tl-item"><div class="tl-year">2026</div><p>ASIC "Year of Accountability." APRA sends formal AI governance guidance to banks and insurers. Privacy Act automated decision-making disclosure obligations take effect December 2026.</p></div>
-      </div>
     </div>
-    <div class="sidebar">
-      <div class="s-note"><strong>Firms that have deployed</strong>Allens (Airlie), A&O Shearman (Harvey), Ashurst (Harvey firm-wide), Gilbert + Tobin (Harvey, 650 lawyers), Holding Redlich (Lexis+ AI permanent), Clayton Utz (Lexis+ AI drafting), MinterEllison (Lantern discovery, Copilot), Maddocks (Cicero AI).</div>
-      <div class="s-note"><strong>Critical caveat</strong>Aggregate graduate hiring across Australian firms rose 6% in 2025. The disruption is compositional: large firms restructure while small firms lag. This may delay but does not prevent broader decline.</div>
+    <div class="sidebar adoption-sequence">
+      <div class="s-note"><strong>2023 · Internal Experimentation</strong>Allens launches Airlie, signalling controlled GenAI experimentation inside major Australian firms.</div>
+      <div class="s-note"><strong>2024 · Production Tasks</strong>Holding Redlich adopts Lexis+ AI after major legal research time compression.</div>
+      <div class="s-note"><strong>2025 · Scaled Rollout</strong>Gilbert + Tobin launches Harvey across 650 lawyers; MinterEllison deploys Lantern for high-volume discovery.</div>
+      <div class="s-note"><strong>2026 · Labour-Market Signal</strong>MinterEllison cuts graduate intake; hours shift toward senior lawyers and higher-skill judgment work.</div>
     </div>
   </div>
 </div>
