@@ -460,13 +460,6 @@ pus  <meta name="viewport" content="width=device-width, initial-scale=1">
         </div>
       </div>
 
-      <div class="chart-wrap reveal">
-        <div class="chart-title">Junior Associate Demand Index — Three Scenario Projections, 2025–2030</div>
-        <div class="chart-sub">Index: 2025 = 100. Illustrative projections based on displacement/reinstatement assumptions from Sections 03–04. Not an econometric forecast.</div>
-        <canvas id="scenarioChart" height="220" aria-label="Line chart showing three scenario projections for junior associate demand from 2025 to 2030" role="img"></canvas>
-        <p style="font-family:Arial,sans-serif;font-size:.72rem;color:var(--muted);margin-top:8px;margin-bottom:0">Sources: displacement/reinstatement logic from Acemoglu and Restrepo (2019, 2025); diffusion lag from Berg (2026); task compression evidence from CAIDE (2025); hiring signal from Tadros (2026).</p>
-      </div>
-
       <h3 class="sec">Economic Mechanisms Across Three Scenarios</h3>
       <table class="sc-table">
         <thead>
@@ -745,80 +738,6 @@ function updateM(){
 }
 updateM();
 
-// SCENARIO CHART
-(function(){
-  const canvas = document.getElementById('scenarioChart');
-  if(!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const years = [2025,2026,2027,2028,2029,2030];
-  const baseline = [100, 96, 91, 85, 80, 76];
-  const upside   = [100, 97, 93, 91, 93, 96];
-  const downside = [100, 93, 84, 73, 63, 56];
-
-  const dpr = window.devicePixelRatio||1;
-  const W = canvas.parentElement.clientWidth - 40;
-  const H = 220;
-  canvas.width = W * dpr;
-  canvas.height = H * dpr;
-  canvas.style.width = W + 'px';
-  canvas.style.height = H + 'px';
-  ctx.scale(dpr, dpr);
-
-  const pad = {top:18, right:20, bottom:36, left:44};
-  const cw = W - pad.left - pad.right;
-  const ch = H - pad.top - pad.bottom;
-
-  const minV=50, maxV=105;
-  const xOf = i => pad.left + (i/(years.length-1))*cw;
-  const yOf = v => pad.top + ch - ((v-minV)/(maxV-minV))*ch;
-
-  // grid lines
-  ctx.strokeStyle='#e8e8e8'; ctx.lineWidth=1;
-  [60,70,80,90,100].forEach(v=>{
-    ctx.beginPath(); ctx.moveTo(pad.left, yOf(v)); ctx.lineTo(pad.left+cw, yOf(v)); ctx.stroke();
-    ctx.fillStyle='#aaa'; ctx.font='10px Arial'; ctx.textAlign='right';
-    ctx.fillText(v, pad.left-6, yOf(v)+3.5);
-  });
-
-  // x axis labels
-  ctx.fillStyle='#888'; ctx.font='10px Arial'; ctx.textAlign='center';
-  years.forEach((y,i)=>{ ctx.fillText(y, xOf(i), H-pad.bottom+14); });
-
-  // draw line helper
-  function drawLine(data, color, dash){
-    ctx.beginPath(); ctx.strokeStyle=color; ctx.lineWidth=2.5;
-    if(dash) ctx.setLineDash(dash); else ctx.setLineDash([]);
-    data.forEach((v,i)=>{ i===0?ctx.moveTo(xOf(i),yOf(v)):ctx.lineTo(xOf(i),yOf(v)); });
-    ctx.stroke();
-    // dots
-    ctx.setLineDash([]);
-    data.forEach((v,i)=>{
-      ctx.beginPath(); ctx.arc(xOf(i),yOf(v),3.5,0,Math.PI*2);
-      ctx.fillStyle=color; ctx.fill();
-    });
-  }
-
-  drawLine(upside,   '#2A623D', []);
-  drawLine(baseline, '#0f2d52', [6,3]);
-  drawLine(downside, '#8B0000', [3,3]);
-
-  // legend
-  const lg = [{c:'#2A623D',l:'Upside',d:false},{c:'#0f2d52',l:'Baseline',d:true},{c:'#8B0000',l:'Downside',d:true}];
-  let lx = pad.left;
-  lg.forEach(({c,l,d})=>{
-    ctx.strokeStyle=c; ctx.lineWidth=2; ctx.setLineDash(d?[5,3]:[]);
-    ctx.beginPath(); ctx.moveTo(lx,10); ctx.lineTo(lx+22,10); ctx.stroke();
-    ctx.setLineDash([]); ctx.fillStyle=c; ctx.font='bold 10px Arial'; ctx.textAlign='left';
-    ctx.fillText(l, lx+26, 13.5);
-    lx += 80;
-  });
-
-  // axis label
-  ctx.save(); ctx.translate(12, pad.top+ch/2); ctx.rotate(-Math.PI/2);
-  ctx.fillStyle='#888'; ctx.font='10px Arial'; ctx.textAlign='center';
-  ctx.fillText('Index (2025 = 100)', 0, 0);
-  ctx.restore();
-})();
 </script>
 </body>
 </html>
