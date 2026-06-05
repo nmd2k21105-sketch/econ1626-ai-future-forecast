@@ -115,7 +115,8 @@ pus  <meta name="viewport" content="width=device-width, initial-scale=1">
     .sc-table th{background:var(--navy);color:#fff;padding:9px 12px;text-align:center;font-weight:600}
     .sc-table th:first-child{text-align:left}
     .sc-table td{padding:9px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
-    .sc-table td:first-child{font-weight:700;color:var(--navy);background:#f4f7fb;white-space:nowrap}
+    .sc-table td:first-child{font-weight:700;color:var(--navy);background:#f4f7fb}
+    .sc-table td em{font-size:.72rem;color:var(--muted);font-style:normal;display:block;margin-top:5px}
     .cb{background:#f0f4fa}.cu{background:#eaf4ee}.cd{background:#faeaea}
 
     .s-wrap{margin:24px 0}
@@ -463,32 +464,32 @@ pus  <meta name="viewport" content="width=device-width, initial-scale=1">
       <h3 class="sec">Economic Mechanisms Across Three Scenarios</h3>
       <table class="sc-table">
         <thead>
-          <tr><th style="width:18%">Economic Mechanism</th><th class="cb" style="width:27%">🔵 Baseline</th><th class="cu" style="width:27%">🟢 Upside</th><th class="cd" style="width:27%">🔴 Downside</th></tr>
+          <tr><th style="width:20%">Mechanism</th><th class="cb" style="width:26%">🔵 Baseline</th><th class="cu" style="width:26%">🟢 Upside</th><th class="cd" style="width:26%">🔴 Downside</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td>Productivity — task-level gains vs aggregate TFP</td>
-            <td class="cb">Large-firm task productivity rises sharply (58× document speed, $1.5m saved per matter — CAIDE 2025) but aggregate TFP remains modest, below 0.55% over ten years (Acemoglu 2024). Gains not passed to clients; 94% of firms retain them (McKeith 2026).</td>
-            <td class="cu">Competitive pricing reform distributes gains broadly. Firms move beyond the bolt-on phase, redesigning workflows around AI capabilities rather than deploying onto existing structures (Berg 2026). Full GPT productivity potential begins to realise.</td>
-            <td class="cd">Productivity gains captured entirely by equity partners and AI vendors. Rent dissipation offsets 60–90% of economy-wide productivity gains as high-rent tasks are automated away without new task creation (Acemoglu and Restrepo 2025).</td>
+            <td><strong>Productivity</strong><br><span style="font-weight:normal;color:var(--muted)">task gains vs TFP</span></td>
+            <td class="cb"><strong>→ Concentrated</strong><br>Task gains real; aggregate TFP modest (&lt;0.55% over 10 yrs). Firms keep savings — 94% don't cut prices. <em>(Acemoglu 2024; McKeith 2026)</em></td>
+            <td class="cu"><strong>↑ Shared</strong><br>Pricing reform distributes gains. Firms redesign beyond bolt-on phase; GPT potential begins to realise. <em>(Berg 2026)</em></td>
+            <td class="cd"><strong>↓ Captured</strong><br>Gains flow to partners and AI vendors. Rent dissipation offsets 60–90% economy-wide. <em>(Acemoglu and Restrepo 2025)</em></td>
           </tr>
           <tr>
-            <td>Employment and tasks — displacement vs reinstatement</td>
-            <td class="cb">Routine cognitive tasks automated first: document review, legal research, first-draft preparation (Autor, Levy and Murnane 2003). Graduate intakes fall 5–10% p.a. at large firms. New AI-governance roles emerge but in smaller numbers than displaced positions; the 5-year skills gap widens (Robb et al. 2025).</td>
-            <td class="cu">Reinstatement effect offsets displacement when new AI-governance, privacy, and verification tasks are created fast enough (Acemoglu and Restrepo 2019). Law school curricula are reformed to build AI-complementary skills before the skills gap becomes structural (Robb et al. 2025).</td>
-            <td class="cd">Net junior employment decline. Reinstatement insufficient — new roles are too few and too specialised to absorb the volume of displaced routine-task workers. CLC roles underfunded. The 5-year skills gap becomes permanent (Robb et al. 2025).</td>
+            <td><strong>Employment</strong><br><span style="font-weight:normal;color:var(--muted)">displacement vs reinstatement</span></td>
+            <td class="cb"><strong>→ Narrowing</strong><br>Graduate intakes fall 5–10% p.a. New AI-governance roles emerge but fewer than displaced positions. Skills gap widens. <em>(Robb et al. 2025)</em></td>
+            <td class="cu"><strong>↑ Offset</strong><br>Reinstatement matches displacement. Law school reform closes the skills gap before it becomes structural. <em>(Acemoglu and Restrepo 2019; Robb et al. 2025)</em></td>
+            <td class="cd"><strong>↓ Permanent loss</strong><br>Net junior decline. New roles too few and too specialised. 5-year skills gap becomes permanent. <em>(Robb et al. 2025)</em></td>
           </tr>
           <tr>
-            <td>Wage distribution — who captures the gain</td>
-            <td class="cb">Capital–labour income gap widens (Acemoglu 2024). Automation targets high-rent junior tasks, dissipating the wage premiums lawyers earned for scarce routine skills (Acemoglu and Restrepo 2025). Partner incomes rise; junior wage premium erodes without reinstatement.</td>
-            <td class="cu">New high-skill AI-governance and verification roles sustain graduate wage levels. Client savings reduce the wealth transfer to capital. The productivity–wage link is partially restored through competition and new task creation (Acemoglu and Restrepo 2019).</td>
-            <td class="cd">Sharp widening. Rent dissipation amplifies wage losses beyond simple task displacement (Acemoglu and Restrepo 2025) — junior lawyers lose not just task hours but the bargaining power that sustained their wage premium. Partners and AI vendors capture AI-driven profits.</td>
+            <td><strong>Wages</strong><br><span style="font-weight:normal;color:var(--muted)">who captures the gain</span></td>
+            <td class="cb"><strong>→ Diverging</strong><br>Capital–labour gap widens. Junior wage premium erodes as AI makes routine tasks abundant. <em>(Acemoglu 2024; Acemoglu and Restrepo 2025)</em></td>
+            <td class="cu"><strong>↑ Sustained</strong><br>New high-skill roles maintain graduate wages. Productivity–wage link partially restored through competition. <em>(Acemoglu and Restrepo 2019)</em></td>
+            <td class="cd"><strong>↓ Sharp widening</strong><br>Rent dissipation amplifies losses. Junior lawyers lose task hours and bargaining power. Capital captures AI profits. <em>(Acemoglu and Restrepo 2025)</em></td>
           </tr>
           <tr>
-            <td>Industry structure — concentration and access to justice</td>
-            <td class="cb">52% vs 17.4% large-small firm adoption gap builds sustained advantage for top-tier commercial firms (OECD 2025). Small practice capability gap persists. Market concentration increases as large firms adopt frontier tools faster than regulation can respond.</td>
-            <td class="cu">Subsidised tool access for CLCs and small firms prevents structural concentration. National liability framework levels the compliance playing field rather than entrenching incumbents (Kretschmer et al. 2023).</td>
-            <td class="cd">Late compliance-heavy regulation creates barriers only large firms can absorb, entrenching incumbents (Kretschmer et al. 2023). Two-tier profession emerges: AI-equipped commercial firms serve corporate clients; under-resourced practices serve everyone else (Simshaw 2022).</td>
+            <td><strong>Industry structure</strong><br><span style="font-weight:normal;color:var(--muted)">concentration and access</span></td>
+            <td class="cb"><strong>→ Widening gap</strong><br>52% vs 17.4% adoption gap entrenches BigLaw advantage. Small practices fall further behind. <em>(OECD 2025)</em></td>
+            <td class="cu"><strong>↑ Levelled</strong><br>Subsidised access for CLCs and small firms. Liability framework prevents compliance costs entrenching incumbents. <em>(Kretschmer et al. 2023)</em></td>
+            <td class="cd"><strong>↓ Two-tier</strong><br>Late heavy regulation entrenches BigLaw. AI-equipped firms serve corporates; under-resourced practices serve everyone else. <em>(Simshaw 2022; Kretschmer et al. 2023)</em></td>
           </tr>
         </tbody>
       </table>
