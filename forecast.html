@@ -195,6 +195,14 @@ pus  <meta name="viewport" content="width=device-width, initial-scale=1">
     .reveal-group.in-view>*:nth-child(4){transition-delay:.24s}
     .reveal-group.in-view>*:nth-child(5){transition-delay:.32s}
 
+    /* Section title animations */
+    .divider.in-view .div-text h2{animation:divH2In .8s cubic-bezier(.16,1.08,.28,1) .18s both}
+    @keyframes divH2In{from{opacity:0;transform:translateY(18px);letter-spacing:.18em}to{opacity:1;transform:translateY(0);letter-spacing:.02em}}
+    .ch-title .w{display:inline-block;opacity:0;transform:translateY(28px);filter:blur(5px);transition:opacity .6s ease,transform .6s cubic-bezier(.16,1.08,.28,1),filter .5s ease}
+    .ch-title.title-in .w{opacity:1;transform:none;filter:none}
+    .ch-date{opacity:0;transform:translateX(-14px);transition:opacity .4s ease,transform .4s ease}
+    .ch-header.title-in .ch-date{opacity:1;transform:none}
+
     @media(max-width:700px){
       .body{grid-template-columns:1fr}.sidebar{display:none}
       .chain{flex-direction:column;gap:6px}.chain-node::after{display:none}
@@ -204,7 +212,7 @@ pus  <meta name="viewport" content="width=device-width, initial-scale=1">
     }
     @media(prefers-reduced-motion:reduce){
       html{scroll-behavior:auto}
-      .hero-bg,.hero-grid,.reveal,.reveal-group>*,.divider::before,.stat-big{transition:none!important;transform:none!important;opacity:1!important;animation:none!important;filter:none!important}
+      .hero-bg,.hero-grid,.reveal,.reveal-group>*,.divider::before,.stat-big,.ch-title .w,.ch-date{transition:none!important;transform:none!important;opacity:1!important;animation:none!important;filter:none!important}
       .scroll-progress{display:none}
     }
   </style>
@@ -675,6 +683,25 @@ function sw(n,btn){
   document.getElementById('sp-'+n).classList.add('show');
   btn.classList.add('on-'+n);
 }
+
+// TITLE ANIMATIONS
+(function(){
+  document.querySelectorAll('h2.ch-title').forEach(el=>{
+    el.innerHTML=el.textContent.trim().split(/\s+/).map((w,i)=>
+      `<span class="w" style="transition-delay:${i*.072}s">${w}</span>`
+    ).join(' ');
+  });
+  const tio=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('title-in');
+        e.target.closest('.ch-header')?.classList.add('title-in');
+        tio.unobserve(e.target);
+      }
+    });
+  },{threshold:.2});
+  document.querySelectorAll('h2.ch-title').forEach(el=>tio.observe(el));
+})();
 
 // CHART
 (function(){
