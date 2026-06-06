@@ -9,10 +9,10 @@
 
 This interactive web essay forecasts how artificial intelligence will reshape Australian legal services between 2025 and 2030. The central argument is distributional: AI is automating the routine cognitive tasks that junior lawyers perform, and the productivity gains are concentrating among equity partners and AI vendors rather than being shared with workers or passed to clients.
 
-**Sector:** Australian legal services ($35.5bn, 97,000 professionals)  
+**Sector:** Australian legal services ($35.8bn, 97,000 professionals)  
 **Forecast horizon:** 2025–2030  
 **Word count:** ~2,000 words (prose only; headings, table labels, and interactive element text excluded)  
-**Sources:** 23 cited works
+**Sources:** 22 cited works
 
 ---
 
@@ -58,7 +58,7 @@ All interactive elements serve the economic argument directly:
 Acemoglu & Restrepo (2019), Acemoglu (2024), Autor et al. (2003), Dell'Acqua et al. (2026), Eloundou et al. (2024), Kretschmer et al. (2023), Martin et al. (2024), Robb et al. (2025), Simshaw (2022)
 
 **Official / government / court:**  
-Bromberg / ALRC (2025), Australian Government National AI Plan (2025), Federal Court of Australia GPN-AI (2026), Legal Services Research Centre / Victorian Census (2026)
+Bromberg / ALRC (2025), Federal Court of Australia GPN-AI (2026), Legal Services Research Centre / Victorian Census (2026)
 
 **Industry / trade:**  
 CAIDE / University of Melbourne (2025), McKeith (2026), National Law Review (2026), Tadros (2026), Thomson Reuters (2026)
