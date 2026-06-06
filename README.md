@@ -1,6 +1,8 @@
 # ECON1626 AI Future Forecast
 ### The Billing Hour Dies at Midnight: AI and Australian Legal Services 2025–2030
 
+**Student:** Manh Dung Nguyen · S4100205  
+**Course:** ECON1626 · RMIT University 2026  
 **Live site:** https://nmd2k21105-sketch.github.io/econ1626-ai-future-forecast/forecast.html
 
 ---
