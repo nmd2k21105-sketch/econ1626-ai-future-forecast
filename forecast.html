@@ -229,7 +229,7 @@ pus  <meta name="viewport" content="width=device-width, initial-scale=1">
     <div class="hero-meta">
       <span>Australian Legal Services · $35.8bn · 97,000 workers</span>
       <span>Forecast: 2025–2030</span>
-      <span>23 sources · 3 scenarios</span>
+      <span>20 sources · 3 scenarios</span>
     </div>
   </div>
   <div class="scroll-hint">Scroll to read</div>
@@ -703,42 +703,6 @@ function sw(n,btn){
     });
   },{threshold:.2});
   document.querySelectorAll('h2.ch-title').forEach(el=>tio.observe(el));
-})();
-
-// CHART
-(function(){
-  const c=document.getElementById('expChart');
-  if(!c)return;
-  const W=c.offsetWidth||680;
-  c.width=W;c.height=190;
-  const ctx=c.getContext('2d');
-  const labels=['Graduate\n(0–2yr)','Junior\n(2–4yr)','Mid\n(4–6yr)','Senior\n(6–8yr)','Partner\n(8yr+)'];
-  const data=[82,68,42,18,8];
-  const colors=['#8b1a1a','#c0392b','#e67e22','#27ae60','#1a7a3a'];
-  const pad={l:38,r:16,t:16,b:70};
-  const maxH=c.height-pad.t-pad.b;
-  const bw=(W-pad.l-pad.r)/labels.length;
-  const bp=bw*0.22;
-  ctx.strokeStyle='#eee';ctx.lineWidth=1;
-  [0,25,50,75,100].forEach(v=>{
-    const y=pad.t+maxH*(1-v/100);
-    ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(W-pad.r,y);ctx.stroke();
-    ctx.fillStyle='#aaa';ctx.font='10px Arial';ctx.textAlign='right';
-    ctx.fillText(v+'%',pad.l-5,y+3);
-  });
-  data.forEach((v,i)=>{
-    const x=pad.l+i*bw+bp/2;
-    const bh=maxH*v/100;
-    const y=pad.t+maxH-bh;
-    ctx.fillStyle=colors[i];
-    ctx.fillRect(x,y,bw-bp,bh);
-    ctx.fillStyle='#222';ctx.font='bold 11px Arial';ctx.textAlign='center';
-    ctx.fillText(v+'%',x+(bw-bp)/2,y-5);
-    ctx.fillStyle='#555';ctx.font='10px Arial';
-    labels[i].split('\n').forEach((w,wi)=>ctx.fillText(w,x+(bw-bp)/2,c.height-pad.b+14+wi*13));
-  });
-  ctx.strokeStyle='#ccc';ctx.lineWidth=1;
-  ctx.beginPath();ctx.moveTo(pad.l,pad.t);ctx.lineTo(pad.l,pad.t+maxH);ctx.stroke();
 })();
 
 // SLIDER
