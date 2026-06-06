@@ -26,7 +26,7 @@ The essay traces a causal chain from AI capability to economic outcome:
 4. Productivity gains flow to firm ownership and technology providers — only 6% charge clients less (McKeith 2026)
 5. Adoption gap persists by firm size: 52% of large firms use AI vs 17.4% of small firms (OECD 2025)
 
-**Why the productivity–wage link breaks:** Worker wages depend on task scarcity, not firm productivity. When AI makes a task abundant, workers lose bargaining power even as the firm becomes more efficient (Acemoglu 2024). Total factor productivity gains remain modest (<0.55% over ten years) because full productivity requires organisational redesign, not just tool adoption (Berg 2026).
+**Why the productivity–wage link breaks:** Worker wages depend on task scarcity, not firm productivity. When AI makes a task abundant, workers lose bargaining power even as the firm becomes more efficient (Acemoglu 2024). Total factor productivity gains remain modest (<0.55% over ten years) (Acemoglu 2024) because full productivity requires organisational redesign, not just tool adoption (Berg 2026).
 
 ---
 
