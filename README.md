@@ -9,7 +9,7 @@
 
 This interactive web essay forecasts how artificial intelligence will reshape Australian legal services between 2025 and 2030. The central argument is distributional: AI is automating the routine cognitive tasks that junior lawyers perform, a process already underway, and productivity gains are flowing to firm ownership and technology providers rather than to workers or clients.
 
-**Sector:** Australian legal services ($35.8bn, 97,000 professionals)  
+**Sector:** Australian legal services ($35.5bn, 126,000 professionals)  
 **Forecast horizon:** 2025–2030  
 **Word count:** ~2,000 words (prose only; headings, table labels, and interactive element text excluded)  
 **Sources:** 20 cited works
