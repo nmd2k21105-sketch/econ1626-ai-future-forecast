@@ -14,7 +14,7 @@ This interactive web essay forecasts how artificial intelligence will reshape Au
 **Sector:** Australian legal services ($35.5bn, 126,000 professionals)  
 **Forecast horizon:** 2025–2030  
 **Word count:** ~2,000 words (prose only; headings, table labels, and interactive element text excluded)  
-**Sources:** 20 cited works
+**Sources:** 22 cited works
 
 ---
 
@@ -45,6 +45,10 @@ All interactive elements serve the economic argument directly:
 - **Policy timeline** — timed 2026 / 2027–30 recommendations with What to Avoid panel
 
 ---
+
+## How to Navigate
+
+Open the live site link above to read the essay. Use the navigation bar at the top of the page to jump between sections.
 
 ## Repository Contents
 
