@@ -5,6 +5,7 @@
 **Course Coordinator:** Professor Chris Berg 
 
 **Student:** Manh Dung Nguyen · S4100205 
+
 **Live site:** https://nmd2k21105-sketch.github.io/econ1626-ai-future-forecast/forecast.html
 
 ---
