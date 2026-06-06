@@ -506,26 +506,41 @@ pus  <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <p><strong>Gap 2: Market concentration.</strong> In the late nineteenth century, early electricity generation required firms to own private generators, a capital-intensive barrier that advantaged large industrial operators over smaller ones. Centralised grid infrastructure resolved this by standardising access and making productive power available regardless of firm size (Works in Progress 2026). AI governance faces an analogous inflection point: while general AI tools are broadly available, safe and legally reliable AI is not. Without deliberate policy intervention, the compliance and verification costs of deploying trustworthy AI will fall disproportionately on large firms. In legal services this risks allowing BigLaw dominance through regulatory absence rather than market competition. Australia's regulatory response must treat reliable AI access as infrastructure by setting standards that make safe deployment achievable for all firms, not just those with resources to absorb uncertainty.</p>
 
-      <div class="p-cards">
-        <div class="p-card">
-          <h4>Immediate 2026 — Law Council + ALRC</h4>
-          <ul>
-            <li>Binding national AI supervision standards, not fragmented guidance built on top of existing guidelines</li>
-            <li>KPI: 90% of top-50 firms with documented AI supervision protocols by Dec 2026</li>
-          </ul>
+      <div class="policy-timeline">
+        <div class="ptl-track">
+          <div class="ptl-node active" onclick="selectNode(0)">
+            <div class="ptl-dot"></div>
+            <div class="ptl-label">2026</div>
+            <div class="ptl-sub">Immediate</div>
+          </div>
+          <div class="ptl-line"></div>
+          <div class="ptl-node" onclick="selectNode(1)">
+            <div class="ptl-dot"></div>
+            <div class="ptl-label">2027–30</div>
+            <div class="ptl-sub">Short–Medium</div>
+          </div>
         </div>
-        <div class="p-card">
-          <h4>Short to Medium Term 2027–30 — ALRC + Parliament + Law Schools</h4>
-          <ul>
-            <li>ALRC delivers statutory review recommending national AI liability framework based on developer/deployer allocation</li>
-            <li>Parliament enacts binding liability standards for AI use in professional services</li>
-            <li>Law schools and education providers develop new frameworks for required AI-era skills</li>
-            <li>Subsidised reliable safe AI access program for community legal centres and small firms</li>
-            <li>KPI: National AI liability framework enacted by 2029</li>
-          </ul>
+        <div class="ptl-panels">
+          <div class="ptl-panel show" id="ptl-0">
+            <div class="ptl-panel-head">Immediate 2026 — Law Council + ALRC</div>
+            <ul>
+              <li>Binding national AI supervision standards, not fragmented guidance built on top of existing guidelines</li>
+              <li>KPI: 90% of top-50 firms with documented AI supervision protocols by Dec 2026</li>
+            </ul>
+          </div>
+          <div class="ptl-panel" id="ptl-1">
+            <div class="ptl-panel-head">Short to Medium Term 2027–30 — ALRC + Parliament + Law Schools</div>
+            <ul>
+              <li>ALRC delivers statutory review recommending national AI liability framework based on developer/deployer allocation</li>
+              <li>Parliament enacts binding liability standards for AI use in professional services</li>
+              <li>Law schools and education providers develop new frameworks for required AI-era skills</li>
+              <li>Subsidised reliable safe AI access program for community legal centres and small firms</li>
+              <li>KPI: National AI liability framework enacted by 2029</li>
+            </ul>
+          </div>
         </div>
-        <div class="p-card">
-          <h4>What to Avoid</h4>
+        <div class="ptl-avoid">
+          <div class="ptl-avoid-head">⚠ What to Avoid</div>
           <ul>
             <li>EU-style ex-ante conformity assessment, which entrenches BigLaw through compliance costs (Kretschmer et al. 2023)</li>
             <li>Technology-specific legislation that becomes obsolete before enforced</li>
@@ -533,6 +548,32 @@ pus  <meta name="viewport" content="width=device-width, initial-scale=1">
           </ul>
         </div>
       </div>
+      <style>
+        .policy-timeline { margin: 2rem 0; }
+        .ptl-track { display: flex; align-items: center; margin-bottom: 1.5rem; }
+        .ptl-node { display: flex; flex-direction: column; align-items: center; cursor: pointer; min-width: 80px; }
+        .ptl-dot { width: 18px; height: 18px; border-radius: 50%; background: #ccc; border: 3px solid #fff; box-shadow: 0 0 0 2px #ccc; transition: all 0.2s; }
+        .ptl-node.active .ptl-dot { background: var(--accent, #28745f); box-shadow: 0 0 0 2px var(--accent, #28745f); }
+        .ptl-label { font-weight: 700; font-size: 0.95rem; margin-top: 6px; color: var(--ink, #17202a); }
+        .ptl-sub { font-size: 0.75rem; color: var(--muted, #5c6875); }
+        .ptl-line { flex: 1; height: 2px; background: #d8e0e8; margin: 0 8px; margin-bottom: 24px; }
+        .ptl-panels { margin-bottom: 1.5rem; }
+        .ptl-panel { display: none; background: #f5f7f9; border-left: 4px solid var(--accent, #28745f); padding: 1rem 1.2rem; border-radius: 0 6px 6px 0; }
+        .ptl-panel.show { display: block; }
+        .ptl-panel-head { font-weight: 700; margin-bottom: 0.6rem; color: var(--accent-dark, #174f41); }
+        .ptl-panel ul { margin: 0; padding-left: 1.2rem; }
+        .ptl-panel li { margin: 6px 0; font-size: 0.95rem; }
+        .ptl-avoid { background: #fff1ef; border-left: 4px solid #8a2f2a; padding: 1rem 1.2rem; border-radius: 0 6px 6px 0; }
+        .ptl-avoid-head { font-weight: 700; color: #8a2f2a; margin-bottom: 0.6rem; }
+        .ptl-avoid ul { margin: 0; padding-left: 1.2rem; }
+        .ptl-avoid li { margin: 6px 0; font-size: 0.95rem; }
+      </style>
+      <script>
+        function selectNode(i) {
+          document.querySelectorAll('.ptl-node').forEach((n,j) => n.classList.toggle('active', i===j));
+          document.querySelectorAll('.ptl-panel').forEach((p,j) => p.classList.toggle('show', i===j));
+        }
+      </script>
     </div>
     <div class="sidebar"></div>
   </div>
