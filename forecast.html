@@ -558,11 +558,16 @@ pus  <meta name="viewport" content="width=device-width, initial-scale=1">
         .ptl-sub { font-size: 0.7rem; color: var(--muted, #5c6875); }
         .ptl-line { flex: 1; height: 2px; background: #d8e0e8; margin: 0 6px; margin-bottom: 20px; }
         .ptl-panels { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1rem; }
-        .ptl-panel { background: #f5f7f9; border-left: 3px solid var(--accent, #28745f); padding: 0.8rem 1rem; border-radius: 0 6px 6px 0; }
+        .ptl-panel { background: #f5f7f9; border-left: 3px solid var(--accent, #28745f); padding: 0.8rem 1rem; border-radius: 0 6px 6px 0; opacity: 0; transform: translateY(16px); }
+        .ptl-avoid { background: #fff1ef; border-left: 3px solid #8a2f2a; padding: 0.8rem 1rem; border-radius: 0 6px 6px 0; opacity: 0; transform: translateY(16px); }
+        .policy-timeline.in-view .ptl-panel, .policy-timeline.in-view .ptl-avoid { animation: ptlDrop .55s cubic-bezier(.16,1.08,.28,1) forwards; }
+        .policy-timeline.in-view .ptl-panel:nth-child(1) { animation-delay: .1s; }
+        .policy-timeline.in-view .ptl-panel:nth-child(2) { animation-delay: .28s; }
+        .policy-timeline.in-view .ptl-avoid { animation-delay: .46s; }
+        @keyframes ptlDrop { 0% { opacity:0; transform:translateY(18px); } 70% { opacity:1; transform:translateY(-2px); } 100% { opacity:1; transform:translateY(0); } }
         .ptl-panel-head { font-weight: 700; margin-bottom: 0.5rem; color: var(--accent-dark, #174f41); font-size: 0.8rem; }
         .ptl-panel ul { margin: 0; padding-left: 1rem; }
         .ptl-panel li { margin: 5px 0; font-size: 0.78rem; line-height: 1.45; }
-        .ptl-avoid { background: #fff1ef; border-left: 3px solid #8a2f2a; padding: 0.8rem 1rem; border-radius: 0 6px 6px 0; }
         .ptl-avoid-head { font-weight: 700; color: #8a2f2a; margin-bottom: 0.5rem; font-size: 0.8rem; }
         .ptl-avoid ul { margin: 0; padding-left: 1rem; }
         .ptl-avoid li { margin: 5px 0; font-size: 0.78rem; line-height: 1.45; }
@@ -641,7 +646,7 @@ pus  <meta name="viewport" content="width=device-width, initial-scale=1">
     ...document.querySelectorAll('.divider,.chapter,.ref-sec,.callout,.pull,.chart-wrap,.slider-wrap,table')
   ];
   revealTargets.forEach(el=>el.classList.add('reveal'));
-  document.querySelectorAll('.stat-strip,.chain,.timeline,.p-cards,.sidebar').forEach(el=>el.classList.add('reveal-group'));
+  document.querySelectorAll('.stat-strip,.chain,.timeline,.p-cards,.sidebar,.policy-timeline').forEach(el=>el.classList.add('reveal-group'));
 
   const io=new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
