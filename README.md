@@ -3,6 +3,7 @@
 
 **Student:** Manh Dung Nguyen · S4100205  
 **Course:** ECON1626 · RMIT University 2026  
+**Course Coordinator:** Professor Chris Berg  
 **Live site:** https://nmd2k21105-sketch.github.io/econ1626-ai-future-forecast/forecast.html
 
 ---
