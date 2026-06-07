@@ -39,13 +39,13 @@ The essay traces a causal chain from AI capability to economic outcome:
 
 All interactive elements serve the economic argument directly:
 
-- **Adoption timeline** — 2023–2026 firm-by-firm adoption sequence
-- **Causal chain diagram** — 3-node visual of the displacement mechanism (Task Compression → Pipeline Pressure → Reinstatement Test)
-- **Task exposure table** — maps six legal task types to AI exposure level with evidence
-- **Junior demand slider** — interactive model letting readers stress-test displacement and reinstatement assumptions
-- **Scenario tabs** — Baseline / Upside / Downside (with causal logic and trigger conditions)
-- **Scenario comparison table** — four economic mechanisms × three scenarios
-- **Policy timeline** — timed 2026 / 2027–30 recommendations with What to Avoid panel
+- **Adoption timeline** : 2023–2026 firm-by-firm adoption sequence
+- **Causal chain diagram** : 3-node visual of the displacement mechanism (Task Compression → Pipeline Pressure → Reinstatement Test)
+- **Task exposure table** : maps six legal task types to AI exposure level with evidence
+- **Junior demand slider** : interactive model letting readers stress-test displacement and reinstatement assumptions
+- **Scenario tabs** : Baseline / Upside / Downside (with causal logic and trigger conditions)
+- **Scenario comparison table** : four economic mechanisms × three scenarios
+- **Policy timeline** : timed 2026 / 2027–30 recommendations with What to Avoid panel
 
 ---
 
