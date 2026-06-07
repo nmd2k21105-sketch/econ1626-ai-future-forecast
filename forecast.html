@@ -754,7 +754,7 @@ function typeWriter(el, text, delay, speed, onDone){
 
   if(sub){
     sub.style.borderRight = '3px solid #7aabce';
-    typeWriter(sub, subText, 600, 50, function(){
+    typeWriter(sub, subText, 300, 25, function(){
       var blinks = 0;
       var cursor = setInterval(function(){
         sub.style.borderColor = sub.style.borderColor === 'transparent' ? '#7aabce' : 'transparent';
@@ -764,8 +764,8 @@ function typeWriter(el, text, delay, speed, onDone){
   }
 
   if(deck){
-    var startDelay = 600 + subText.length * 80 + 800;
-    typeWriter(deck, deckText, startDelay, 8, null);
+    var startDelay = 300 + subText.length * 25 + 400;
+    typeWriter(deck, deckText, startDelay, 4, null);
   }
 })();
 
