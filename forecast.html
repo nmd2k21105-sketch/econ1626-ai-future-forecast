@@ -19,6 +19,9 @@ pus  <meta name="viewport" content="width=device-width, initial-scale=1">
     .hero-eyebrow::before{content:'';display:block;width:32px;height:1px;background:#7aabce}
     .hero h1{font-size:clamp(2.8rem,7vw,5.5rem);line-height:1.04;font-weight:normal;color:#fff;margin-bottom:32px;letter-spacing:-1px;text-wrap:balance}
     .hero h1 .sub{color:#7aabce;font-style:italic}
+    .hero h1 .sub.typing{overflow:hidden;white-space:nowrap;border-right:3px solid #7aabce;width:0;animation:typeIn 1.2s steps(9,end) .6s forwards,cursorBlink .75s step-end 1.8s 4}
+    @keyframes typeIn{to{width:9ch}}
+    @keyframes cursorBlink{0%,100%{border-color:#7aabce}50%{border-color:transparent}}
     .hero-deck{font-family:Arial,sans-serif;font-size:1.05rem;color:#c5d8ea;max-width:640px;line-height:1.65;margin-bottom:48px}
     .hero-meta{font-family:Arial,sans-serif;font-size:.78rem;color:#6a96b8;display:flex;gap:10px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.1);padding-top:20px}
     .hero-meta span{border:1px solid rgba(122,171,206,.24);background:rgba(255,255,255,.035);padding:6px 9px}
@@ -224,7 +227,7 @@ pus  <meta name="viewport" content="width=device-width, initial-scale=1">
   <div class="hero-bg"></div><div class="hero-grid"></div>
   <div class="hero-inner">
     <div class="hero-eyebrow">ECON1626 · AI Future Forecast · RMIT University 2026 · Professor Chris Berg · Manh Dung Nguyen · S4100205</div>
-    <h1>AI Productivity:<br><span class="sub">Who Wins?</span></h1>
+    <h1>AI Productivity:<br><span class="sub typing">Who Wins?</span></h1>
     <p class="hero-deck">AI is restructuring the world economy and Australian legal services included. Junior tasks are being automated, gains are concentrating among senior partners and firm owners. Regulation? Afraid it's not catching up fast enough.</p>
     <div class="hero-meta">
       <span>Australian Legal Services · $35.5bn · 126,000 workers</span>
