@@ -227,7 +227,7 @@ pus  <meta name="viewport" content="width=device-width, initial-scale=1">
   <div class="hero-inner">
     <div class="hero-eyebrow">ECON1626 · AI Future Forecast · RMIT University 2026 · Professor Chris Berg · Manh Dung Nguyen · S4100205</div>
     <h1>AI Productivity:<br><span class="sub typing">Who Wins?</span></h1>
-    <p class="hero-deck">AI is restructuring the world economy and Australian legal services included. Junior tasks are being automated, gains are concentrating among senior partners and firm owners. Regulation? Afraid it's not catching up fast enough.</p>
+    <p class="hero-deck typing-deck"></p>
     <div class="hero-meta">
       <span>Australian Legal Services · $35.5bn · 126,000 workers</span>
       <span>Forecast: 2025–2030</span>
@@ -735,24 +735,38 @@ function updateM(){
 }
 updateM();
 
-// Typewriter effect for hero subtitle
-(function(){
-  var el = document.querySelector('.hero h1 .sub.typing');
-  if(!el) return;
-  var text = el.textContent;
+// Typewriter effect
+function typeWriter(el, text, delay, speed, onDone){
   el.textContent = '';
   var i = 0;
   setTimeout(function type(){
     el.textContent = text.slice(0, ++i);
-    if(i < text.length) setTimeout(type, 80);
-    else {
+    if(i < text.length) setTimeout(type, speed);
+    else if(onDone) onDone();
+  }, delay);
+}
+
+(function(){
+  var sub = document.querySelector('.hero h1 .sub.typing');
+  var deck = document.querySelector('.typing-deck');
+  var subText = 'Who Wins?';
+  var deckText = 'AI is restructuring the world economy and Australian legal services included. Junior tasks are being automated, gains are concentrating among senior partners and firm owners. Regulation? Afraid it’s not catching up fast enough.';
+
+  if(sub){
+    sub.style.borderRight = '3px solid #7aabce';
+    typeWriter(sub, subText, 600, 80, function(){
       var blinks = 0;
       var cursor = setInterval(function(){
-        el.classList.toggle('cursor-off');
-        if(++blinks > 6) { clearInterval(cursor); el.classList.remove('cursor-off'); el.style.borderColor='transparent'; }
+        sub.style.borderColor = sub.style.borderColor === 'transparent' ? '#7aabce' : 'transparent';
+        if(++blinks > 6){ clearInterval(cursor); sub.style.borderColor = 'transparent'; }
       }, 400);
-    }
-  }, 600);
+    });
+  }
+
+  if(deck){
+    var startDelay = 600 + subText.length * 80 + 800;
+    typeWriter(deck, deckText, startDelay, 18, null);
+  }
 })();
 
 </script>
